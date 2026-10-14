@@ -31,11 +31,13 @@ textarea{min-height:60px}.row{display:flex;gap:8px;align-items:flex-end}.row>*{f
 #toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#222;color:#fff;padding:12px 20px;border-radius:24px;display:none;z-index:50}
 .pvwrap{overflow-x:hidden;overflow-y:auto;background:#7d8a96;padding:10px;border-radius:12px}
 .paper{color:#000;font-family:"Times New Roman","Noto Naskh Arabic",Tahoma,serif;font-size:16px;line-height:1.6}
-.page{background:#fff;width:794px;height:1122px;margin:0 auto 14px;padding:26px;overflow:hidden;box-shadow:0 2px 8px #0005}
+.page{background:#fff;width:794px;height:1122px;margin:0 auto 14px;padding:30px;overflow:hidden;box-shadow:0 2px 8px #0005}
 .frame{border:4px double #000;height:100%;padding:10px 14px 0;display:flex;flex-direction:column}.frame .body{flex:1;min-height:0;overflow:hidden}.blk{display:flow-root}.pno{text-align:center;font-size:13px;height:30px;line-height:30px;border-top:1px solid #999}.gsp{width:60px;flex:none}h3.st{margin:14px 0 8px!important}
-.hd{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1.5px solid #000;padding-bottom:8px;font-size:14px;font-weight:bold}
+.hd{font-size:14px;font-weight:bold}
 .hd .r{flex:1.2;text-align:center;font-size:14px;line-height:1.9}.hd .r div{text-decoration:underline;text-underline-offset:3px}.hd .c{flex:1;text-align:center;font-size:13px}.hd .c img{max-height:70px;max-width:130px;display:block;margin:0 auto 4px}
-.hd .l{flex:1}.hd .l .g{display:flex;align-items:center;gap:10px;margin-top:4px}
+.hd .g{display:flex;align-items:center;gap:10px;margin-top:4px}.hd.line{border-bottom:1.5px solid #000;padding-bottom:8px}.hd.box{border:1.5px solid #000;padding:8px;border-radius:4px}.hd.none{border:0}.hrow{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}.hc{flex:1;line-height:1.9;min-width:0}.hc.sm{font-size:.93em}.hu{text-decoration:underline;text-underline-offset:3px}.hlogo{margin:0 0 4px}.hlogo img{display:inline-block}.htop{line-height:1.9}.sturow{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:8px;flex-wrap:wrap}.sturow .g{margin:0}
+@font-face{font-family:Amiri;src:url(fonts/Amiri-Regular.ttf);font-weight:400}@font-face{font-family:Amiri;src:url(fonts/Amiri-Bold.ttf);font-weight:700}@font-face{font-family:Tajawal;src:url(fonts/Tajawal-Regular.ttf);font-weight:400}@font-face{font-family:Tajawal;src:url(fonts/Tajawal-Bold.ttf);font-weight:700}@font-face{font-family:Cairo;src:url(fonts/Cairo.ttf);font-weight:200 1000}@font-face{font-family:"Noto Naskh Arabic";src:url(fonts/NotoNaskhArabic.ttf);font-weight:400 700}@font-face{font-family:"Noto Kufi Arabic";src:url(fonts/NotoKufiArabic.ttf);font-weight:100 900}
+.ordl{display:flex;align-items:center;gap:6px;margin:4px 0;padding:6px 8px;border:1.5px solid #dde4ea;border-radius:10px;background:#fafcfd}.ordl span{flex:1}.ordl button{border:0;background:#e2ece9;border-radius:8px;width:40px;height:36px;font-size:16px}#hdPrev{background:#fff;border:1px solid #ccc;border-radius:8px;padding:8px;overflow:hidden;margin-top:8px}#hdPrev .paper{width:738px}
 .gbox{width:60px;border:1.5px solid #000;flex:none;font-size:13px;font-weight:bold;text-align:center}.gbox div{height:32px;line-height:32px}.gbox div+div{border-top:1.5px solid #000}
 .ps{margin-top:12px}.st{text-decoration:underline;font-size:17px} .ps h3{font-size:17px;margin:4px 0 8px;text-decoration:underline}
 .unit{display:flex;gap:10px;align-items:flex-start;page-break-inside:avoid;margin-bottom:6px}.unit .ct{flex:1}
@@ -44,7 +46,7 @@ textarea{min-height:60px}.row{display:flex;gap:8px;align-items:flex-end}.row>*{f
 .ichoose{display:flex;justify-content:space-around;align-items:center;margin:8px 0 14px;flex-wrap:wrap;gap:10px}.ichoose span{display:inline-block;padding:6px;border-radius:50%;text-align:center}.ichoose img{max-height:105px;max-width:150px;display:block}
 .ichoose span.ok{border:4px solid #0a7a3a}.badge{position:absolute;top:-6px;right:6px;background:#c0392b;color:#fff;border-radius:50%;width:24px;height:24px;line-height:24px;font-size:14px}
 .ops{display:flex;flex-wrap:wrap;gap:4px 30px;padding-right:20px}.ln{border-bottom:1px dotted #000;height:30px}.ok{color:#0a7a3a;font-weight:bold}.keytag{color:#c0392b;text-align:center;font-weight:bold}
-@media print{body{background:#fff}header.top,nav,.noprint,#toast{display:none!important}main{padding:0;max-width:none}.tab{display:none!important}#tPrev{display:block!important}.pvwrap{background:none;padding:0;overflow:visible}.paper{zoom:1!important}.page{margin:0;box-shadow:none;break-after:page}.page:last-child{break-after:auto}@page{size:A4;margin:0}}
+@page{size:A4 portrait;margin:0}@media print{html,body{margin:0!important;padding:0!important;background:#fff!important;width:210mm}header.top,nav,.noprint,#toast,#tut,#iosHint{display:none!important}main{padding:0!important;margin:0!important;max-width:none!important}.tab{display:none!important}#tPrev{display:block!important;padding:0!important;margin:0!important}#tPrev>*:not(.pvwrap){display:none!important}.pvwrap{background:none;padding:0;margin:0;overflow:visible;border-radius:0}.paper{zoom:1!important;transform:none!important}.page{width:210mm!important;height:296.8mm!important;padding:8mm!important;margin:0!important;box-shadow:none!important;break-after:page;page-break-after:always;overflow:hidden}.page:last-child{break-after:auto;page-break-after:auto}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 .psg{border:1.5px solid #000;padding:8px 12px;border-radius:6px;margin:4px 0 8px;text-align:justify;display:flow-root}.psg img{float:left;max-height:120px;max-width:160px;margin:4px 10px 4px 0}
 .wds span{display:inline-block;border:1px solid #000;border-radius:5px;padding:0 8px;margin:2px 4px}.pf img{max-height:100px!important;max-width:150px!important}
 .paper.big .pi img{max-height:105px;max-width:165px}.paper.big .ichoose img{max-height:150px;max-width:210px}.paper.big .mrow img{max-height:95px;max-width:170px}.paper.big .pf img{max-height:150px!important;max-width:220px!important}.paper.big .ln{height:44px}
@@ -80,14 +82,22 @@ input,textarea,select{font-size:17px!important}select{-webkit-appearance:none;ap
 <section id="tHead" class="tab on"><div class="card">
 <label>عنوان الامتحان</label><input id="h_title" placeholder="امتحان الفترة الدراسية الأولى لمادة ...">
 <div class="row"><div><label>العام الدراسي</label><input id="h_year" placeholder="2026/2025م"></div><div><label>الصف</label><input id="h_grade" placeholder="الصف الأول"></div></div>
+<label>المادة (اختياري)</label><input id="h_subject" placeholder="المادة: اللغة العربية">
 <label>الشعار (ارفعه من جهازك)</label><button class="btn alt w" onclick="pickImg(d=>{S.h.logo=d;save();fillHead()},'png')">🖼️ اختيار الشعار</button>
 <div id="logoBox" class="hint"></div>
 <label>السطر الأول تحت الشعار</label><input id="h_l1" placeholder="الإدارة العامة لمنطقة ... التعليمية">
 <label>السطر الثاني تحت الشعار</label><input id="h_l2" placeholder="مدرسة ...">
 <label>الدرجة الكلية (اتركها فاضية تنحسب بروحها)</label><input id="h_total" type="number" inputmode="decimal">
 </div>
-<div class="card"><b>🔤 الخط والتنسيق</b><div class="row"><div><label>نوع الخط</label><select id="f_font"><option value="times">نسخ (Times New Roman)</option><option value="arial">واضح (Arial)</option><option value="tahoma">عريض (Tahoma)</option></select></div>
-<div><label>حجم الخط</label><select id="f_size"><option value="s">صغير</option><option value="m">متوسط</option><option value="l">كبير</option></select></div></div></div>
+<div class="card"><b>🧩 شكل الترويسة</b><div class="hint">غيّر وشوف النتيجة تحت مباشرة</div>
+<label>النموذج</label><select id="y_preset"><option value="classic">كلاسيكي (العنوان يمين • الشعار بالوسط)</option><option value="moe">نموذج الوزارة (الوزارة يمين • الشعار بالوسط • المادة يسار)</option><option value="top">الشعار فوق بالوسط والكلام تحته</option><option value="two">عمودين (الكلام يمين • الشعار والاسم يسار)</option></select>
+<div class="row"><div><label>مكان الشعار</label><select id="y_logo"><option value="r">يمين</option><option value="c">وسط</option><option value="l">يسار</option><option value="none">بدون شعار</option></select></div><div><label>حجم الشعار</label><select id="y_lsz"><option value="s">صغير</option><option value="m">متوسط</option><option value="l">كبير</option></select></div></div>
+<div class="row"><div><label>محاذاة الكلام</label><select id="y_align"><option value="r">يمين</option><option value="c">وسط</option><option value="l">يسار</option></select></div><div><label>خط تحت الترويسة</label><select id="y_line"><option value="line">خط تحتها</option><option value="box">داخل مربع</option><option value="none">بدون</option></select></div></div>
+<div class="row"><div><label>خط الترويسة</label><select id="f_hfont"></select></div><div><label>حجم خط الترويسة</label><select id="f_hsize"><option value="s">صغير</option><option value="m">متوسط</option><option value="l">كبير</option><option value="xl">كبير جدًا</option></select></div></div>
+<label>ترتيب الأسطر (اضغط ▲ ▼)</label><div id="ordBox"></div>
+<div id="hdPrev"></div></div>
+<div class="card"><b>🔤 الخط والتنسيق</b><div class="row"><div><label>نوع الخط</label><select id="f_font"></select></div>
+<div><label>حجم الخط</label><select id="f_size"><option value="s">صغير</option><option value="m">متوسط</option><option value="l">كبير</option><option value="xl">كبير جدًا</option></select></div></div><label style="font-size:17px;margin-top:10px;display:block"><input type="checkbox" id="f_spread" style="width:auto;transform:scale(1.4);margin-left:8px">↕️ توزيع الأسئلة على الصفحة (مسافات مريحة)</label></div>
 <div class="card"><b>قوالب الترويسة</b><div class="hint">احفظ الترويسة مرة وحدة واستخدمها بكل اختبار.</div>
 <button class="btn alt w" onclick="saveTpl()">💾 حفظ الترويسة كقالب</button><div id="tplList"></div></div>
 <button class="btn w" onclick="go('tQs')">التالي: الأسئلة ←</button></section>
@@ -118,18 +128,20 @@ input,textarea,select{font-size:17px!important}select{-webkit-appearance:none;ap
 <script>
 const TN={order:'رتب الكلمات',picfill:'أكمل بالصورة',passage:'قطعة قراءة',tf:'صح وخطأ',match:'صل الكلمة بالصورة',img:'اختر الصورة الصحيحة',circle:'ضع دائرة حول الصورة',mc:'اختيار من متعدد',fill:'أكمل الفراغ',essay:'سؤال مقالي'};
 const DT={order:'رتب الكلمات التالية لتكوين جملة مفيدة:',picfill:'أكمل الفراغ بما يناسب الصورة:',passage:'اقرأ النص التالي ثم أجب عن الأسئلة:',tf:'ضع علامة ( ✓ ) أمام العبارة الصحيحة وعلامة ( ✗ ) أمام العبارة الخاطئة:',match:'صل بين الكلمة والصورة المناسبة لها:',img:'اختر الإجابة الصحيحة:',circle:'ضع دائرة حول ...',mc:'اختر الإجابة الصحيحة:',fill:'أكمل الفراغات التالية:',essay:'أجب عن الأسئلة التالية:'};
-const ORDN=['الأول','الثاني','الثالث','الرابع','الخامس','السادس','السابع','الثامن','التاسع','العاشر'],L='أبجد',HF=['title','year','grade','l1','l2','total'];
+const ORDN=['الأول','الثاني','الثالث','الرابع','الخامس','السادس','السابع','الثامن','التاسع','العاشر'],L='أبجد',HF=['title','subject','year','grade','l1','l2','total'];
 const $=id=>document.getElementById(id),uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
-function blank(h){return{v:3,id:uid(),name:'',fmt:{font:'times',size:'m'},h:h||{title:'',year:'',grade:'',l1:'',l2:'',total:'',logo:null},secs:[]}}
-function ensure(x){x.id=x.id||uid();x.fmt=x.fmt||{font:'times',size:'m'};x.v=3;return x}
-let S=blank(),DB=null;
+function blank(h){return ensure({v:3,id:uid(),name:'',fmt:{font:'times',size:'m'},h:h||{title:'',subject:'',year:'',grade:'',l1:'',l2:'',total:'',logo:null},secs:[]})}
+function ensure(x){x.id=x.id||uid();x.fmt=Object.assign({font:'times',size:'m',hfont:'',hsize:'m',spread:true},x.fmt||{});x.h=x.h||{};x.h.lay=lay(x.h);x.v=3;return x}
+const HK=['l1','l2','title','subject','year','grade'],HN={l1:'السطر الأول (الوزارة / المنطقة)',l2:'السطر الثاني (المدرسة)',title:'عنوان الامتحان',subject:'المادة',year:'العام الدراسي',grade:'الصف'};
+function lay(h){const d={preset:'classic',logo:'c',lsz:'m',align:'c',line:'line',order:HK.slice()};const y=Object.assign(d,h&&h.lay||{});y.order=y.order.filter(k=>HK.includes(k));HK.forEach(k=>{if(!y.order.includes(k))y.order.push(k)});return y}
+let DB=null,S;
 function idbOpen(){return new Promise((ok,no)=>{const r=indexedDB.open('examMakerDB',1);r.onupgradeneeded=()=>{const d=r.result;d.createObjectStore('exams',{keyPath:'id'});d.createObjectStore('bank',{keyPath:'id'});d.createObjectStore('meta')};r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error)})}
 function tx(store,mode,fn){return new Promise((ok,no)=>{const t=DB.transaction(store,mode),o=t.objectStore(store);let res;const q=fn(o);if(q)q.onsuccess=()=>res=q.result;t.oncomplete=()=>ok(res);t.onerror=()=>no(t.error);t.onabort=()=>no(t.error)})}
 const getAll=st=>tx(st,'readonly',o=>o.getAll()),put=(st,v,k)=>tx(st,'readwrite',o=>o.put(v,k)),del=(st,k)=>tx(st,'readwrite',o=>o.delete(k)),get=(st,k)=>tx(st,'readonly',o=>o.get(k));
 function exName(d){return d.name||d.h.title||'اختبار بدون عنوان'}
 let st;function save(){clearTimeout(st);$('saved').textContent='...';st=setTimeout(flush,300)}
 async function flush(){clearTimeout(st);if(!DB)return;try{S.updated=Date.now();await put('exams',{id:S.id,updated:S.updated,data:S});$('saved').textContent='محفوظ تلقائيًا ✓'}catch(e){$('saved').textContent='⚠️ ما انحفظ';toast('ما قدرت أحفظ: احفظ نسخة احتياطية')}}
-async function init(){try{DB=await idbOpen()}catch(e){toast('التخزين غير متاح');fillHead();renderList();return}
+async function init(){S=blank();try{DB=await idbOpen()}catch(e){toast('التخزين غير متاح');fillHead();renderList();return}
 let all=await getAll('exams');if(!all.length){let old=null;try{old=JSON.parse(localStorage.getItem('examMaker2'))}catch(e){}if(old&&old.h&&old.secs){ensure(old);await put('exams',{id:old.id,updated:Date.now(),data:old});all=await getAll('exams')}}
 const cur=await get('meta','current');const rec=all.find(r=>r.id==cur)||all.sort((a,b)=>b.updated-a.updated)[0];
 if(rec)S=ensure(rec.data);else{S=blank();await flush()}await put('meta',S.id,'current');fillHead();renderList();if(!localStorage.getItem('tutDone'))setTimeout(tutStart,400)}
@@ -142,8 +154,13 @@ let pend=null,pendFmt='jpg';
 function pickImg(cb,fmt){pend=cb;pendFmt=fmt||'jpg';$('imgIn').value='';$('imgIn').click()}
 $('imgIn').onchange=e=>{const f=e.target.files[0];if(!f||!pend)return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const mx=pendFmt=='png'?300:480,sc=Math.min(1,mx/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(im.width*sc));c.height=Math.max(1,Math.round(im.height*sc));const g=c.getContext('2d');if(pendFmt!='png'){g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height)}g.drawImage(im,0,0,c.width,c.height);const o={d:pendFmt=='png'?c.toDataURL('image/png'):c.toDataURL('image/jpeg',.78),w:c.width,h:c.height};const cb=pend;pend=null;cb(o)};im.onerror=()=>toast('الصورة ما انفتحت');im.src=r.result};r.readAsDataURL(f)};
 // header
-function fillHead(){HF.forEach(k=>$('h_'+k).value=S.h[k]||'');$('f_font').value=S.fmt.font;$('f_size').value=S.fmt.size;$('logoBox').innerHTML=S.h.logo?`<img src="${S.h.logo.d}" style="max-height:60px"> <button class="btn alt sm" onclick="S.h.logo=null;save();fillHead()">إزالة</button>`:'لا يوجد شعار';renderTpl()}
-HF.forEach(k=>$('h_'+k).oninput=e=>{S.h[k]=e.target.value;save()});$('f_font').onchange=e=>{S.fmt.font=e.target.value;save()};$('f_size').onchange=e=>{S.fmt.size=e.target.value;save()};
+function fillHead(){if(!$('f_font').options.length){$('f_font').innerHTML=Object.keys(FN).map(k=>`<option value="${k}">${FN[k]}</option>`).join('');$('f_hfont').innerHTML='<option value="">نفس خط الأسئلة</option>'+$('f_font').innerHTML}S.h.lay=lay(S.h);const y=S.h.lay;HF.forEach(k=>$('h_'+k).value=S.h[k]||'');$('f_font').value=S.fmt.font;$('f_size').value=S.fmt.size;$('f_hfont').value=S.fmt.hfont||'';$('f_hsize').value=S.fmt.hsize||'m';$('f_spread').checked=S.fmt.spread!==false;['preset','logo','lsz','align','line'].forEach(k=>$('y_'+k).value=y[k]);renderOrd();hdLive();$('logoBox').innerHTML=S.h.logo?`<img src="${S.h.logo.d}" style="max-height:60px"> <button class="btn alt sm" onclick="S.h.logo=null;save();fillHead()">إزالة</button>`:'لا يوجد شعار';renderTpl()}
+HF.forEach(k=>$('h_'+k).oninput=e=>{S.h[k]=e.target.value;save();hdLive()});$('f_font').onchange=e=>{S.fmt.font=e.target.value;save();hdLive()};$('f_size').onchange=e=>{S.fmt.size=e.target.value;save()};
+$('f_hfont').onchange=e=>{S.fmt.hfont=e.target.value;save();hdLive()};$('f_hsize').onchange=e=>{S.fmt.hsize=e.target.value;save();hdLive()};$('f_spread').onchange=e=>{S.fmt.spread=e.target.checked;save()};
+['preset','logo','lsz','align','line'].forEach(k=>$('y_'+k).onchange=e=>{S.h.lay=lay(S.h);S.h.lay[k]=e.target.value;save();hdLive()});
+function renderOrd(){const o=S.h.lay.order;$('ordBox').innerHTML=o.map((k,i)=>`<div class="ordl"><span>${HN[k]}${S.h[k]?'':' <i class="hint">(فاضي)</i>'}</span><button onclick="mvOrd(${i},-1)" ${i?'':'disabled'}>▲</button><button onclick="mvOrd(${i},1)" ${i<o.length-1?'':'disabled'}>▼</button></div>`).join('')}
+function mvOrd(i,d){const o=S.h.lay.order,j=i+d;if(j<0||j>=o.length)return;[o[i],o[j]]=[o[j],o[i]];save();renderOrd();hdLive()}
+function hdLive(){const b=$('hdPrev');if(!b)return;b.innerHTML=`<div class="paper" style="font-family:${(FF[S.fmt.font]||FF.times).replace(/"/g,"'")}">${hdHTML(S.h,'A',false)}</div>`;const w=(b.clientWidth||340)-16;b.firstChild.style.zoom=Math.min(1,w/738)}
 function tpls(){try{return JSON.parse(localStorage.getItem('examTpl2'))||[]}catch(e){return[]}}
 function saveTpl(){const n=prompt('اسم القالب:',S.h.l2||'قالبي');if(!n)return;const t=tpls().filter(x=>x.n!=n);const h=JSON.parse(JSON.stringify(S.h));delete h.total;t.push({n,h});try{localStorage.setItem('examTpl2',JSON.stringify(t));toast('تم حفظ القالب ✓')}catch(e){toast('ما قدرت أحفظ القالب')}renderTpl()}
 function renderTpl(){const t=tpls();$('tplList').innerHTML=t.map((x,i)=>`<div class="row" style="margin-top:6px"><button class="btn alt" onclick="useTpl(${i})">📋 ${esc(x.n)}</button><button class="btn red sm" style="flex:0 0 50px" onclick="delTpl(${i})">🗑️</button></div>`).join('')}
@@ -201,19 +218,36 @@ if(s.type=='match'){const m={};S.secs.find(x=>x.id==s.id).items.forEach((o,i)=>m
 // preview
 function gbox(m){return`<div class="gbox"><div></div><div>${fmt(m)}</div></div>`}
 let RP=0;
-const FF={times:'"Times New Roman","Noto Naskh Arabic",serif',arial:'Arial,"Noto Sans Arabic",sans-serif',tahoma:'Tahoma,"Noto Sans Arabic",sans-serif'},SZ={s:.9,m:1,l:1.15};
+const FF={times:'"Times New Roman","Noto Naskh Arabic",serif',arial:'Arial,"Noto Sans Arabic",sans-serif',tahoma:'Tahoma,"Noto Sans Arabic",sans-serif',naskh:'"Noto Naskh Arabic","Times New Roman",serif',amiri:'Amiri,"Times New Roman",serif',kufi:'"Noto Kufi Arabic",Tahoma,sans-serif',cairo:'Cairo,Tahoma,sans-serif',tajawal:'Tajawal,Arial,sans-serif'},SZ={s:.9,m:1,l:1.15,xl:1.3},HSZ={s:.85,m:1,l:1.15,xl:1.3};
+const FN={times:'نسخ (Times New Roman)',arial:'واضح (Arial)',tahoma:'عريض (Tahoma)',naskh:'نسخ حديث (Noto Naskh)',amiri:'أميري (تقليدي جميل)',kufi:'كوفي (Noto Kufi)',cairo:'القاهرة (Cairo)',tajawal:'تجوال (Tajawal)'},WF={times:'Times New Roman',arial:'Arial',tahoma:'Tahoma',naskh:'Noto Naskh Arabic',amiri:'Amiri',kufi:'Noto Kufi Arabic',cairo:'Cairo',tajawal:'Tajawal'},FFILE={naskh:['NotoNaskhArabic.ttf'],amiri:['Amiri-Regular.ttf','Amiri-Bold.ttf'],kufi:['NotoKufiArabic.ttf'],cairo:['Cairo.ttf'],tajawal:['Tajawal-Regular.ttf','Tajawal-Bold.ttf']};
+const LSZ={s:[100,50],m:[130,70],l:[180,95]};
+function hdModel(h,v,key){const y=lay(h),A=['title','subject','year','grade'],Bk=['l1','l2'],tx=k=>k=='year'?(h.year?'العام الدراسي '+h.year:''):String(h[k]||''),
+ln=ks=>y.order.filter(k=>ks.includes(k)&&tx(k)).map(k=>({t:'ln',k,tx:tx(k),u:A.includes(k)})),V=v=='B'?[{t:'ln',k:'ver',tx:'نموذج (ب)'}]:[],al=y.align;let m;
+if(y.preset=='moe'){m={cols:[{its:ln(Bk),al,w:1.2},{its:ln(['title']),al:'c',w:1},{its:ln(A.filter(k=>k!='title')).concat(V),al,w:1.2}],row:1}}
+else if(y.preset=='top'){m={top:ln(HK).concat(V),tal:al,cols:[],row:1}}
+else if(y.preset=='two'){m={cols:[{its:ln(HK).concat(V),al,w:1.6},{its:[{t:'stu'}],al:'r',w:1}]}}
+else m={cols:[{its:ln(A).concat(V),al,w:1.2},{its:ln(Bk),al:'c',w:1,sm:1},{its:[{t:'stu'}],al:'r',w:1}]};
+if(h.logo&&y.logo!='none'){if(y.preset=='top'||(y.preset=='two'&&y.logo=='c')){m.logoTop=y.preset=='top'?y.logo:'c'}else{const i=y.logo=='r'?0:y.logo=='l'?m.cols.length-1:Math.floor(m.cols.length/2);m.cols[i].its.unshift({t:'logo'})}}
+m.line=y.line;m.lsz=LSZ[y.lsz]||LSZ.m;return m}
+const ALC={r:'right',c:'center',l:'left'};
+function stuHTML(key,row){const nm=key?'<div class="keytag" style="font-size:18px">نموذج الإجابة</div>':'<div>الاسم : ......................................</div><div>الصف: ......................................</div>';const g=`<div class="g"><span>الدرجة :</span>${gbox(total())}</div>`;return row?`<div class="sturow">${key?nm:'<div>الاسم : ......................................</div><div>الصف: ............</div>'}${g}</div>`:nm+g}
+function hdHTML(h,v,key){const m=hdModel(h,v,key),f=S.fmt,lg=h.logo?`<img src="${h.logo.d}" style="max-height:${m.lsz[1]}px;max-width:${m.lsz[0]+40}px">`:'';
+const it=x=>x.t=='logo'?`<div class="hlogo">${lg}</div>`:x.t=='stu'?stuHTML(key,0):`<div${x.u?' class="hu"':''}>${esc(x.tx)}</div>`;
+let o='';if(m.logoTop)o+=`<div class="hlogo" style="text-align:${ALC[m.logoTop]}">${lg}</div>`;if(m.top)o+=`<div class="htop" style="text-align:${ALC[m.tal]}">${m.top.map(it).join('')}</div>`;
+if(m.cols.length)o+=`<div class="hrow">${m.cols.map(c=>`<div class="hc${c.sm?' sm':''}" style="flex:${c.w};text-align:${ALC[c.al]}">${c.its.map(it).join('')}</div>`).join('')}</div>`;if(m.row)o+=stuHTML(key,1);
+return`<div class="hd ${m.line}" style="font-size:${(14*(HSZ[f.hsize]||1)).toFixed(1)}px;font-family:${f.hfont?FF[f.hfont].replace(/"/g,"'"):'inherit'}">${o}</div>`}
+let SPX={};
 async function renderPrev(){const my=++RP,v=$('ver').value,key=$('mode').value=='key',h=S.h,secs=build(v),big=$('big').checked;const B=[];const P0=$('paper');P0.classList.toggle('big',big);P0.style.fontFamily=FF[S.fmt.font]||FF.times;P0.style.fontSize=(16*(SZ[S.fmt.size]||1)*(big?1.4:1))+'px';
-B.push({h:`<div class="hd"><div class="r"><div>${esc(h.title)}</div><div>${esc(h.year?'العام الدراسي '+h.year:'')}</div><div>${esc(h.grade)}</div>${v=='B'?'<div>نموذج (ب)</div>':''}</div>
-<div class="c">${h.logo?`<img src="${h.logo.d}">`:''}${esc(h.l1)}<br>${esc(h.l2)}</div>
-<div class="l">${key?'<div class="keytag" style="font-size:18px">نموذج الإجابة</div>':'<div>الاسم : ......................................</div><div>الصف: ......................................</div>'}<div class="g"><span>الدرجة :</span>${gbox(total())}</div></div></div>`});
+B.push({h:hdHTML(h,v,key),hdr:1});
 secs.forEach((s,si)=>{B.push({h:`<h3 class="st">السؤال ${ORDN[si]||si+1}: ${esc(s.title)}</h3>`,keep:1,brk:s.np});if(s.type=='passage'&&(s.passage||s.pimg))B.push({h:`<div class="psg">${s.pimg?`<img src="${s.pimg.d}">`:''}${esc(s.passage).replace(/\n/g,'<br>')}</div>`,keep:1});const per=s.per=='item'&&s.items.length>1,pm=secMarks(s)/s.items.length;
 const mr=(it,i)=>{const c=s.col[i];return`<div class="mrow"><span class="tx">${it.n}. ${esc(it.text)}</span><span class="im">${key?`<span class="badge">${c.k}</span>`:''}${c.img?`<img src="${c.img.d}">`:'<i>(صورة)</i>'}</span></div>`};
-s.items.forEach((it,i)=>B.push({h:`<div class="unit"><div class="ct">${s.type=='match'?mr(it,i):itemHTML(s,it,key)}</div>${per?gbox(pm):i==0?gbox(s.marks):'<div class="gsp"></div>'}</div>`}))});
+s.items.forEach((it,i)=>B.push({id:si+'_'+i,h:`<div class="unit"><div class="ct">${s.type=='match'?mr(it,i):itemHTML(s,it,key)}</div>${per?gbox(pm):i==0?gbox(s.marks):'<div class="gsp"></div>'}</div>`}))});
 const P=$('paper');P.style.zoom=1;P.innerHTML=`<div class="page" style="position:absolute;visibility:hidden;left:-3000px"><div class="frame"><div class="body" id="meas">${B.map(b=>`<div class="blk">${b.h}</div>`).join('')}</div></div></div>`;
 await Promise.all([...P.querySelectorAll('img')].map(i=>i.decode().catch(()=>0)));if(my!=RP)return;
-const M=$('meas'),H=M.clientHeight,hs=[...M.children].map(e=>e.offsetHeight);const pages=[[]];let used=0;
-B.forEach((b,i)=>{let need=hs[i];if(b.keep&&i+1<B.length)need+=hs[i+1]+(B[i+1].keep&&i+2<B.length?hs[i+2]:0);if((b.brk||used+need>H)&&used>0){pages.push([]);used=0}pages[pages.length-1].push(b.h);used+=hs[i]});
-const n=pages.length;P.innerHTML=pages.map((p,i)=>`<div class="page"><div class="frame"><div class="body">${p.map(x=>`<div class="blk">${x}</div>`).join('')}</div><div class="pno">صفحة ${i+1} من ${n}</div></div></div>`).join('');fit()}
+const M=$('meas'),H=M.clientHeight,hs=[...M.children].map(e=>e.offsetHeight);const pages=[[]],U=[0];let used=0;
+B.forEach((b,i)=>{let need=hs[i];if(b.keep&&i+1<B.length)need+=hs[i+1]+(B[i+1].keep&&i+2<B.length?hs[i+2]:0);if((b.brk||used+need>H)&&used>0){pages.push([]);U.push(0);used=0}pages[pages.length-1].push(b);used+=hs[i];U[U.length-1]=used});
+SPX={};const spr=S.fmt.spread!==false;pages.forEach((p,pi)=>{const its=p.filter(b=>b.id);if(!spr||!its.length)return;const e=Math.min(Math.floor((H-U[pi]-6)/its.length),140);if(e>2)its.forEach(b=>{b.sp=e;SPX[b.id]=e})});
+const n=pages.length;P.innerHTML=pages.map((p,i)=>`<div class="page"><div class="frame"><div class="body">${p.map(x=>`<div class="blk"${x.sp?` style="padding-bottom:${x.sp}px"`:''}>${x.h}</div>`).join('')}</div><div class="pno">صفحة ${i+1} من ${n}</div></div></div>`).join('');fit()}
 function itemHTML(s,it,key){const im=it.img?`<img src="${it.img.d}">`:'';const one=s.items.length==1&&!it.text;
 switch(s.type){case'tf':return`<div class="pi"><span class="tx">${it.n}. ${esc(it.text)} &nbsp; ( ${key?`<b class="ok">${it.ok?'✓':'✗'}</b>`:'&nbsp;&nbsp;&nbsp;'} )</span>${im}</div>`;
 case'img':case'circle':return(one?'':`<div style="font-weight:bold;font-size:18px">${s.items.length>1?it.n+'. ':''}${esc(it.text)}</div>`)+`<div class="ichoose">${it.imgs.map((g,k)=>`<span class="${key&&k==it.correct?'ok':''}">${g?`<img src="${g.d}">`:'(صورة)'}</span>`).join('')}</div>`;
@@ -245,7 +279,7 @@ const cs=cen.reduce((a,x)=>a+x.byteLength,0),e=new DataView(new ArrayBuffer(22))
 return new Blob([...parts,...cen,e],{type:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'})}
 // DOCX
 const xe=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-let FONT="Times New Roman",FSM=1,PICM=1;
+let FONT="Times New Roman",FSM=1,PICM=1,HFONT=FONT,HSM=1;
 function run(t,o={}){const z=Math.round((o.sz||24)*FSM);return`<w:r><w:rPr><w:rFonts w:ascii="${FONT}" w:hAnsi="${FONT}" w:cs="${FONT}"/>${o.b?'<w:b/><w:bCs/>':''}${o.c?`<w:color w:val="${o.c}"/>`:''}<w:sz w:val="${z}"/><w:szCs w:val="${z}"/>${o.u?'<w:u w:val="single"/>':''}<w:rtl/></w:rPr><w:t xml:space="preserve">${xe(t)}</w:t></w:r>`}
 function para(runs,o={}){return`<w:p><w:pPr>${o.dot?'<w:pBdr><w:bottom w:val="dotted" w:sz="6" w:space="1" w:color="000000"/></w:pBdr>':''}${o.kn?'<w:keepNext/>':''}${o.pb?'<w:pageBreakBefore/>':''}<w:bidi/><w:spacing w:before="${o.bf??40}" w:after="${o.af??40}"/>${o.ind?`<w:ind w:right="${o.ind}"/>`:''}<w:jc w:val="${o.jc||'right'}"/></w:pPr>${Array.isArray(runs)?runs.join(''):runs}</w:p>`}
 let MEDIA;function pic(img,maxW,maxH){if(!img)return run('(صورة)',{c:'999999'});maxW*=PICM;maxH*=PICM;const sc=Math.min(maxW/img.w,maxH/img.h,1.5*PICM),cx=Math.round(img.w*sc*9525),cy=Math.round(img.h*sc*9525);const png=img.d.startsWith('data:image/png'),n=MEDIA.length+1,id='rImg'+n;MEDIA.push({id,name:'img'+n+(png?'.png':'.jpg'),d:img.d});
@@ -263,17 +297,23 @@ case'picfill':return tbl([2400,5800],[[it.img?para(pic(it.img,150,100),{jc:'cent
 case'passage':return itemX({type:it.k=='short'?'essay':it.k,items:[it,it]},it,key);
 case'essay':return tbl([6000,2200],[[para(run(it.n+'. '+it.text)),it.img?para(pic(it.img,110,70),{jc:'center'}):'']])+(key?para(run(it.ans||'—',{c:'0A7A3A'}),{ind:300}):Array.from({length:it.lines||3},()=>para(run(' '),{dot:1,bf:160,af:0})).join(''))}}
 function docXml(ver,key){MEDIA=[];const h=S.h,secs=build(ver);let b='';
-const R=[para(run(h.title||'',{b:1,u:1,sz:21}),{bf:30,af:30,jc:'center'}),para(run(h.year?'العام الدراسي '+h.year:'',{b:1,u:1,sz:21}),{bf:30,af:30,jc:'center'}),para(run(h.grade||'',{b:1,u:1,sz:21}),{bf:30,af:30,jc:'center'})];if(ver=='B')R.push(para(run('نموذج (ب)',{b:1,sz:22}),{bf:30,af:30,jc:'center'}));
-const C=(h.logo?para(pic(h.logo,130,70),{jc:'center',bf:0,af:0}):'')+para(run(h.l1||'',{b:1,sz:20}),{jc:'center',bf:0,af:0})+para(run(h.l2||'',{b:1,sz:20}),{jc:'center',bf:0,af:0});
-const Lc=(key?para(run('نموذج الإجابة',{b:1,c:'C0392B',sz:28}),{jc:'center'}):para(run('الاسم : ................................',{b:1,sz:22}))+para(run('الصف: ................................',{b:1,sz:22})))+tbl([1500,1000],[[para(run('الدرجة :',{b:1,sz:22})),gboxX(total())]]);
-b+=tbl([4100,2800,3000],[[R.join(''),C,Lc]],{va:'top',bb:[1,1,1]});
+{const m=hdModel(h,ver,key),q=FSM,qf=FONT;FSM=HSM;FONT=HFONT;const jc=a=>({r:'right',c:'center',l:'left'})[a]||'center',sz=x=>x.k=='l1'||x.k=='l2'?20:21;
+const lgX=a=>h.logo?para(pic(h.logo,m.lsz[0],m.lsz[1]),{jc:jc(a),bf:0,af:40}):'';
+const nmX=()=>key?para(run('نموذج الإجابة',{b:1,c:'C0392B',sz:28}),{jc:'center'}):para(run('الاسم : ................................',{b:1,sz:22}));
+const stuX=row=>{const g=tbl([1500,1000],[[para(run('الدرجة :',{b:1,sz:22})),gboxX(total())]]);if(row)return tbl([4300,3000,2400],[[nmX(),key?'':para(run('الصف: ...............',{b:1,sz:22})),g]]);return nmX()+(key?'':para(run('الصف: ................................',{b:1,sz:22})))+g};
+const itX=(x,a)=>x.t=='logo'?lgX(a):x.t=='stu'?stuX(0):para(run(x.tx,{b:1,u:x.u,sz:x.k=='ver'?22:sz(x)}),{bf:30,af:30,jc:jc(a)});
+let o='';if(m.logoTop)o+=lgX(m.logoTop);if(m.top)o+=m.top.map(x=>itX(x,m.tal)).join('');
+if(m.cols.length){const tw=m.cols.reduce((a,c)=>a+c.w,0),W=m.cols.map(c=>Math.round(9700*c.w/tw));o+=tbl(W,[m.cols.map(c=>c.its.map(x=>itX(x,c.al)).join(''))],{va:'top'})}
+if(m.row)o+=stuX(1);
+b+=tbl([9900],[[o]],{va:'top',border:m.line=='box',bb:m.line=='line'?[1]:0});FSM=q;FONT=qf}
 secs.forEach((s,si)=>{b+=para(run(`السؤال ${ORDN[si]||si+1}: ${s.title}`,{b:1,u:1,sz:26}),{bf:200,af:80,kn:1,pb:s.np&&si>0});if(s.type=='passage'&&(s.passage||s.pimg))b+=tbl([9700],[[(s.pimg?para(pic(s.pimg,160,120),{jc:'left'}):'')+String(s.passage||'').split('\n').map(l=>para(run(l),{jc:'both'})).join('')]],{border:1});const per=s.per=='item'&&s.items.length>1,pm=secMarks(s)/s.items.length;
 const mx=(it,i)=>{const c=s.col[i];return[para(run(it.n+'. '+it.text,{b:1,sz:26})),para((key?run('('+c.k+') ',{b:1,c:'C0392B'}):'')+pic(c.img,120,62),{jc:'center'})]};
-let rows;if(per)rows=s.items.map((it,i)=>[s.type=='match'?tbl([5200,3000],[mx(it,i)]):itemX(s,it,key),gboxX(pm)]);
-else if(s.type=='match')rows=s.items.map((it,i)=>[tbl([5200,3000],[mx(it,i)]),i==0?gboxX(s.marks):'']);
-else rows=s.items.map((it,i)=>[itemX(s,it,key),i==0?gboxX(s.marks):'']);
+const spx=i=>SPX[si+'_'+i]?para(run(''),{bf:Math.round(SPX[si+'_'+i]*12),af:0}):'';
+let rows;if(per)rows=s.items.map((it,i)=>[(s.type=='match'?tbl([5200,3000],[mx(it,i)]):itemX(s,it,key))+spx(i),gboxX(pm)]);
+else if(s.type=='match')rows=s.items.map((it,i)=>[tbl([5200,3000],[mx(it,i)])+spx(i),i==0?gboxX(s.marks):'']);
+else rows=s.items.map((it,i)=>[itemX(s,it,key)+spx(i),i==0?gboxX(s.marks):'']);
 b+=tbl([8400,1300],rows,{va:'top'})});
-return`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"><w:body>${b}<w:p/><w:sectPr><w:footerReference w:type="default" r:id="rFt"/><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="900" w:right="1000" w:bottom="1200" w:left="1000" w:header="400" w:footer="750" w:gutter="0"/><w:pgBorders w:offsetFrom="page">${['top','left','bottom','right'].map(k=>`<w:${k} w:val="double" w:sz="12" w:space="24" w:color="000000"/>`).join('')}</w:pgBorders><w:bidi/></w:sectPr></w:body></w:document>`}
+return`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"><w:body>${b}<w:p/><w:sectPr><w:footerReference w:type="default" r:id="rFt"/><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="850" w:right="850" w:bottom="1000" w:left="850" w:header="400" w:footer="560" w:gutter="0"/><w:pgBorders w:offsetFrom="page">${['top','left','bottom','right'].map(k=>`<w:${k} w:val="double" w:sz="12" w:space="22" w:color="000000"/>`).join('')}</w:pgBorders><w:bidi/></w:sectPr></w:body></w:document>`}
 const FOOT='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:ftr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:p><w:pPr><w:bidi/><w:jc w:val="center"/></w:pPr>'+run('صفحة ',{sz:20})+'<w:fldSimple w:instr=" PAGE "><w:r><w:rPr><w:sz w:val="20"/></w:rPr><w:t>1</w:t></w:r></w:fldSimple>'+run(' من ',{sz:20})+'<w:fldSimple w:instr=" NUMPAGES "><w:r><w:rPr><w:sz w:val="20"/></w:rPr><w:t>1</w:t></w:r></w:fldSimple>'+'</w:p></w:ftr>';
 function b64(d){const bin=atob(d.split(',')[1]),u=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);return u}
 function makeDocx(ver,key){const doc=docXml(ver,key);const f=[['[Content_Types].xml','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/><Default Extension="jpg" ContentType="image/jpeg"/><Override PartName="/word/footer1.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.footer+xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>'],
@@ -282,7 +322,7 @@ function makeDocx(ver,key){const doc=docXml(ver,key);const f=[['[Content_Types].
 MEDIA.forEach(m=>f.push(['word/media/'+m.name,b64(m.d)]));return zip(f)}
 // ===== outputs =====
 function outName(ext){const v=$('ver').value,k=$('mode').value=='key',b=$('big').checked;return fname()+(v=='B'?' - نموذج ب':' - نموذج أ')+(k?' - الإجابة':'')+(b?' - مكبر':'')+'.'+ext}
-function docxBlob(){const b=$('big').checked;FONT={times:'Times New Roman',arial:'Arial',tahoma:'Tahoma'}[S.fmt.font]||'Times New Roman';FSM=(SZ[S.fmt.size]||1)*(b?1.4:1);PICM=b?1.5:1;try{return makeDocx($('ver').value,$('mode').value=='key')}finally{FSM=1;PICM=1}}
+async function docxBlob(){const b=$('big').checked;await renderPrev();FONT=WF[S.fmt.font]||'Times New Roman';HFONT=WF[S.fmt.hfont]||FONT;FSM=(SZ[S.fmt.size]||1)*(b?1.4:1);HSM=(HSZ[S.fmt.hsize]||1)*(b?1.4:1);PICM=b?1.5:1;try{return makeDocx($('ver').value,$('mode').value=='key')}finally{FSM=1;PICM=1}}
 const IOS=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1),STANDALONE=navigator.standalone||matchMedia('(display-mode: standalone)').matches;
 function canShareFile(file){try{return !!(navigator.canShare&&navigator.share&&navigator.canShare({files:[file]}))}catch(e){return false}}
 async function share(blob,name,mime,again){const file=new File([blob],name,{type:mime});
@@ -290,10 +330,11 @@ if(canShareFile(file)){try{await navigator.share({files:[file],title:name});retu
 dl(blob,name);if(!IOS)toast('المشاركة غير مدعومة هني، نزلت الملف بدالها');return false}
 function save2(blob,name,mime){if(IOS)return share(blob,name,mime);dl(blob,name);return Promise.resolve(true)}
 const DOCX_MIME='application/vnd.openxmlformats-officedocument.wordprocessingml.document';
-async function outDocx(sh){if(!S.secs.length)return toast('أضف أسئلة أول');const b=docxBlob(),n=outName('docx');if(sh)await share(b,n,DOCX_MIME);else{await save2(b,n,DOCX_MIME);toast('تم تجهيز ملف Word ✓')}}
+async function outDocx(sh){if(!S.secs.length)return toast('أضف أسئلة أول');const b=await docxBlob(),n=outName('docx');if(sh)await share(b,n,DOCX_MIME);else{await save2(b,n,DOCX_MIME);toast('تم تجهيز ملف Word ✓')}}
 function dlDocx(){outDocx(0)}
 // PDF: render each page via SVG foreignObject -> canvas -> JPEG -> minimal PDF
-async function pageJpeg(pg){const css=document.querySelector('style').textContent,P=$('paper');
+const FDATA={};async function fontCss(){const ks=[...new Set([S.fmt.font,S.fmt.hfont].filter(k=>FFILE[k]))];let o='';for(const k of ks)for(const f of FFILE[k]){if(FDATA[f]==null){try{const bl=await (await fetch('fonts/'+f)).blob();FDATA[f]=await new Promise(r=>{const fr=new FileReader();fr.onload=()=>r(fr.result);fr.readAsDataURL(bl)})}catch(e){FDATA[f]=''}}if(FDATA[f])o+=`@font-face{font-family:'${WF[k]}';src:url(${FDATA[f]});font-weight:${/Bold/.test(f)?700:/Regular/.test(f)?400:'100 1000'}}`}return o}
+async function pageJpeg(pg){const css=(await fontCss())+document.querySelector('style').textContent.replace(/@font-face\{[^}]*\}/g,''),P=$('paper');
 const xml=new XMLSerializer().serializeToString(pg);const W=794,H=1122,sc=IOS?1.6:2;
 const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><foreignObject width="100%" height="100%"><div xmlns="http://www.w3.org/1999/xhtml" class="${P.className}" dir="rtl" style="font-family:${P.style.fontFamily.replace(/"/g,"'")};font-size:${P.style.fontSize};width:${W}px;height:${H}px"><style>${css.replace(/</g,'\\3c ')}</style>${xml}</div></foreignObject></svg>`;
 const im=new Image();im.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);await im.decode();
