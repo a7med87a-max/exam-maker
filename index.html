@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1f6f5c"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="صانع الاختبارات"><meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png">
+<title>صانع الاختبارات</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,"Noto Naskh Arabic",Arial,sans-serif;background:#eef2f6;color:#1d2733;font-size:17px}
+header.top{background:#1f6f5c;color:#fff;padding:12px 14px;font-size:21px;font-weight:bold;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5;height:50px}
+header.top small{font-size:12px;opacity:.85;font-weight:normal}
+nav{display:flex;background:#fff;position:sticky;top:50px;z-index:5;box-shadow:0 2px 4px #0001}
+nav button{flex:1;border:0;background:none;padding:14px 4px;font-size:17px;font-family:inherit;border-bottom:4px solid transparent;color:#555}
+nav button.on{border-color:#1f6f5c;color:#1f6f5c;font-weight:bold}
+main{padding:12px;max-width:820px;margin:auto}.tab{display:none}.tab.on{display:block}
+.card{background:#fff;border-radius:14px;padding:14px;margin-bottom:12px;box-shadow:0 1px 3px #0002}
+label{display:block;font-size:15px;margin:10px 0 4px;color:#444}
+input,textarea,select{width:100%;font-size:17px;padding:10px;border:1.5px solid #c5cfd8;border-radius:10px;font-family:inherit;background:#fbfcfd}
+textarea{min-height:60px}.row{display:flex;gap:8px;align-items:flex-end}.row>*{flex:1}
+.btn{display:inline-block;border:0;border-radius:12px;padding:13px 14px;font-size:16px;font-family:inherit;font-weight:bold;background:#1f6f5c;color:#fff;margin:4px 0;cursor:pointer}
+.btn.w{width:100%}.btn.alt{background:#e2ece9;color:#1f6f5c}.btn.red{background:#c0392b}.btn.or{background:#d98a1f}.btn.sm{padding:8px 10px;font-size:14px}
+.types{display:grid;grid-template-columns:1fr 1fr;gap:8px}.types .btn{width:100%;padding:15px 6px;margin:0}
+.sec{border:2px solid #1f6f5c33}.sec>.sh{display:flex;justify-content:space-between;align-items:center;font-weight:bold;color:#1f6f5c}
+.it{border:1.5px solid #dde4ea;border-radius:12px;padding:10px;margin:10px 0;background:#fafcfd}
+.it .ih{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:#1f6f5c;font-weight:bold}
+.imgpick{display:flex;align-items:center;gap:8px;margin-top:6px}.imgpick img{max-height:56px;max-width:80px;border:1px solid #ccc;border-radius:6px}
+.opt{display:flex;gap:6px;align-items:center;margin:6px 0}.opt input[type=radio]{width:28px;height:28px;flex:none}
+.igrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}.igrid .cell{border:2px dashed #c5cfd8;border-radius:10px;padding:6px;text-align:center;min-height:90px}
+.igrid .cell.ok{border:3px solid #1f9d55;background:#e9f8ef}.igrid img{max-width:100%;max-height:70px}
+.tf{display:flex;gap:8px}.tf button{flex:1;padding:11px;font-size:17px;border-radius:12px;border:2px solid #c5cfd8;background:#fff;font-family:inherit}.tf button.on{border-color:#1f6f5c;background:#dff1eb;font-weight:bold}
+.hint{font-size:14px;color:#667;margin:4px 0}.sum{font-weight:bold;padding:8px;border-radius:10px;background:#f3f7f5;text-align:center;margin-bottom:10px}
+#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#222;color:#fff;padding:12px 20px;border-radius:24px;display:none;z-index:50}
+.pvwrap{overflow-x:hidden;overflow-y:auto;background:#7d8a96;padding:10px;border-radius:12px}
+.paper{color:#000;font-family:"Times New Roman","Noto Naskh Arabic",Tahoma,serif;font-size:16px;line-height:1.6}
+.page{background:#fff;width:794px;height:1122px;margin:0 auto 14px;padding:26px;overflow:hidden;box-shadow:0 2px 8px #0005}
+.frame{border:4px double #000;height:100%;padding:10px 14px 0;display:flex;flex-direction:column}.frame .body{flex:1;min-height:0;overflow:hidden}.blk{display:flow-root}.pno{text-align:center;font-size:13px;height:30px;line-height:30px;border-top:1px solid #999}.gsp{width:60px;flex:none}h3.st{margin:14px 0 8px!important}
+.hd{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1.5px solid #000;padding-bottom:8px;font-size:14px;font-weight:bold}
+.hd .r{flex:1.2;text-align:center;font-size:14px;line-height:1.9}.hd .r div{text-decoration:underline;text-underline-offset:3px}.hd .c{flex:1;text-align:center;font-size:13px}.hd .c img{max-height:70px;max-width:130px;display:block;margin:0 auto 4px}
+.hd .l{flex:1}.hd .l .g{display:flex;align-items:center;gap:10px;margin-top:4px}
+.gbox{width:60px;border:1.5px solid #000;flex:none;font-size:13px;font-weight:bold;text-align:center}.gbox div{height:32px;line-height:32px}.gbox div+div{border-top:1.5px solid #000}
+.ps{margin-top:12px}.st{text-decoration:underline;font-size:17px} .ps h3{font-size:17px;margin:4px 0 8px;text-decoration:underline}
+.unit{display:flex;gap:10px;align-items:flex-start;page-break-inside:avoid;margin-bottom:6px}.unit .ct{flex:1}
+.pi{display:flex;align-items:center;gap:14px;margin:6px 0;min-height:30px}.pi .tx{flex:1}.pi img{max-height:70px;max-width:110px}
+.mrow{display:flex;align-items:center;justify-content:space-between;margin:8px 0;min-height:60px}.mrow .tx{font-weight:bold}.mrow .im{width:150px;text-align:center;position:relative}.mrow img{max-height:62px;max-width:120px}
+.ichoose{display:flex;justify-content:space-around;align-items:center;margin:8px 0 14px;flex-wrap:wrap;gap:10px}.ichoose span{display:inline-block;padding:6px;border-radius:50%;text-align:center}.ichoose img{max-height:105px;max-width:150px;display:block}
+.ichoose span.ok{border:4px solid #0a7a3a}.badge{position:absolute;top:-6px;right:6px;background:#c0392b;color:#fff;border-radius:50%;width:24px;height:24px;line-height:24px;font-size:14px}
+.ops{display:flex;flex-wrap:wrap;gap:4px 30px;padding-right:20px}.ln{border-bottom:1px dotted #000;height:30px}.ok{color:#0a7a3a;font-weight:bold}.keytag{color:#c0392b;text-align:center;font-weight:bold}
+@media print{body{background:#fff}header.top,nav,.noprint,#toast{display:none!important}main{padding:0;max-width:none}.tab{display:none!important}#tPrev{display:block!important}.pvwrap{background:none;padding:0;overflow:visible}.paper{zoom:1!important}.page{margin:0;box-shadow:none;break-after:page}.page:last-child{break-after:auto}@page{size:A4;margin:0}}
+.psg{border:1.5px solid #000;padding:8px 12px;border-radius:6px;margin:4px 0 8px;text-align:justify;display:flow-root}.psg img{float:left;max-height:120px;max-width:160px;margin:4px 10px 4px 0}
+.wds span{display:inline-block;border:1px solid #000;border-radius:5px;padding:0 8px;margin:2px 4px}.pf img{max-height:100px!important;max-width:150px!important}
+.paper.big .pi img{max-height:105px;max-width:165px}.paper.big .ichoose img{max-height:150px;max-width:210px}.paper.big .mrow img{max-height:95px;max-width:170px}.paper.big .pf img{max-height:150px!important;max-width:220px!important}.paper.big .ln{height:44px}
+h3.st{font-size:1.07em}
+.ex{display:flex;flex-direction:column;gap:6px}.ex.cur{border:2.5px solid #1f6f5c}.ex .nm{font-weight:bold;font-size:18px}.acts4{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.acts4 .btn{padding:10px 2px;font-size:14px;margin:0}
+.tag{display:inline-block;background:#e2ece9;color:#1f6f5c;border-radius:8px;padding:2px 8px;font-size:13px;margin-left:4px}
+#helpBtn{background:#fff3;border:0;color:#fff;font-size:18px;border-radius:50%;width:40px;height:40px;margin-right:8px}
+#tut{position:fixed;left:10px;right:10px;bottom:14px;z-index:1000;background:#fffbe6;border:3px solid #f0b400;border-radius:16px;padding:14px;box-shadow:0 6px 24px #0006;display:none;max-width:600px;margin:auto}
+#tut .tt{font-size:18px;line-height:1.7}#tut .tn{font-size:13px;color:#886}.tutHi{outline:4px solid #f0b400!important;outline-offset:-4px;background:#fff6cc!important}
+nav button{font-size:15px}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{-webkit-tap-highlight-color:transparent;padding-bottom:env(safe-area-inset-bottom)}
+header.top{height:calc(50px + env(safe-area-inset-top));padding-top:env(safe-area-inset-top);padding-left:max(14px,env(safe-area-inset-left));padding-right:max(14px,env(safe-area-inset-right))}
+nav{top:calc(50px + env(safe-area-inset-top))}main{padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right))}
+input,textarea,select{font-size:17px!important}select{-webkit-appearance:none;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#555 50%),linear-gradient(135deg,#555 50%,transparent 50%);background-position:14px 55%,20px 55%;background-size:6px 6px;background-repeat:no-repeat;padding-left:30px}
+.btn,nav button,.tf button{min-height:44px;touch-action:manipulation}.btn.sm{min-height:40px;min-width:40px}input[type=checkbox],input[type=radio]{min-width:22px;min-height:22px}
+#tut{bottom:calc(14px + env(safe-area-inset-bottom))}#toast{bottom:calc(20px + env(safe-area-inset-bottom))}
+#iosHint{display:none;background:#fff8e1;border:2px solid #f0b400}
+#shareReady{position:fixed;inset:0;background:#0008;z-index:1100;display:none;align-items:center;justify-content:center;padding:20px}#shareReady .card{max-width:420px;width:100%;text-align:center}
+</style></head><body>
+<header class="top"><span>📝 صانع الاختبارات</span><span><small id="saved">محفوظ تلقائيًا</small><button id="helpBtn" onclick="tutStart()" title="مساعدة">❓</button></span></header>
+<nav><button data-t="tList">📚 اختباراتي</button><button data-t="tHead" class="on">١ الترويسة</button><button data-t="tQs">٢ الأسئلة</button><button data-t="tPrev">٣ المعاينة</button></nav>
+<main>
+<section id="tList" class="tab"><div class="card" id="iosHint"><b>📲 ثبّت التطبيق على الآيفون</b><div class="tt" style="margin:6px 0">اضغط مشاركة <b>⬆️</b> ← <b>إضافة إلى الشاشة الرئيسية</b>، ويصير التطبيق عندك مثل أي برنامج ويشتغل بدون إنترنت.</div><button class="btn alt sm" onclick="localStorage.setItem('iosHintOff',1);$('iosHint').style.display='none'">تمام، فهمت</button></div><div class="card"><button class="btn w" onclick="newExam()">➕ اختبار جديد</button>
+<div class="row"><button class="btn alt" onclick="jsonIn.click()">📂 فتح اختبار محفوظ</button><button class="btn alt" onclick="go('tBank')">⭐ بنك الأسئلة</button></div></div>
+<div id="exList"></div>
+<div class="card"><b>🛟 النسخة الاحتياطية</b><div class="hint">ملف واحد فيه كل اختباراتك وبنك الأسئلة. احفظه بقوقل درايف أو أرسله لنفسك بالواتساب، وإذا غيرت جوالك ترجعه من زر «استرجاع».</div>
+<div class="row"><button class="btn alt" onclick="backupExport()">💾 حفظ نسخة احتياطية</button><button class="btn alt" onclick="backupIn.click()">♻️ استرجاع نسخة</button></div>
+<input type="file" id="backupIn" style="display:none"></div></section>
+<section id="tBank" class="tab"><div class="card"><b>⭐ بنك الأسئلة</b><div class="hint">احفظ أي سؤال بزر «⭐ للبنك» واستخدمه بأي اختبار.</div>
+<div class="row"><div><label>المادة</label><select id="bSub"></select></div><div><label>الدرس</label><select id="bLes"></select></div></div>
+<div class="row"><div><label>النوع</label><select id="bType"></select></div><div><label>بحث</label><input id="bQ" placeholder="كلمة من السؤال"></div></div></div>
+<div id="bankList"></div><button class="btn w alt" onclick="go('tQs')">→ رجوع للأسئلة</button></section>
+<section id="tHead" class="tab on"><div class="card">
+<label>عنوان الامتحان</label><input id="h_title" placeholder="امتحان الفترة الدراسية الأولى لمادة ...">
+<div class="row"><div><label>العام الدراسي</label><input id="h_year" placeholder="2026/2025م"></div><div><label>الصف</label><input id="h_grade" placeholder="الصف الأول"></div></div>
+<label>الشعار (ارفعه من جهازك)</label><button class="btn alt w" onclick="pickImg(d=>{S.h.logo=d;save();fillHead()},'png')">🖼️ اختيار الشعار</button>
+<div id="logoBox" class="hint"></div>
+<label>السطر الأول تحت الشعار</label><input id="h_l1" placeholder="الإدارة العامة لمنطقة ... التعليمية">
+<label>السطر الثاني تحت الشعار</label><input id="h_l2" placeholder="مدرسة ...">
+<label>الدرجة الكلية (اتركها فاضية تنحسب بروحها)</label><input id="h_total" type="number" inputmode="decimal">
+</div>
+<div class="card"><b>🔤 الخط والتنسيق</b><div class="row"><div><label>نوع الخط</label><select id="f_font"><option value="times">نسخ (Times New Roman)</option><option value="arial">واضح (Arial)</option><option value="tahoma">عريض (Tahoma)</option></select></div>
+<div><label>حجم الخط</label><select id="f_size"><option value="s">صغير</option><option value="m">متوسط</option><option value="l">كبير</option></select></div></div></div>
+<div class="card"><b>قوالب الترويسة</b><div class="hint">احفظ الترويسة مرة وحدة واستخدمها بكل اختبار.</div>
+<button class="btn alt w" onclick="saveTpl()">💾 حفظ الترويسة كقالب</button><div id="tplList"></div></div>
+<button class="btn w" onclick="go('tQs')">التالي: الأسئلة ←</button></section>
+
+<section id="tQs" class="tab"><div class="card"><b>أضف سؤال جديد:</b><div class="types" style="margin-top:8px">
+<button class="btn" onclick="addSec('tf')">✔️✖️ صح وخطأ</button><button class="btn" onclick="addSec('match')">🔗 صل الكلمة بالصورة</button>
+<button class="btn" onclick="addSec('img')">🖼️ اختر الصورة الصحيحة</button><button class="btn" onclick="addSec('circle')">⭕ ضع دائرة حول الصورة</button>
+<button class="btn" onclick="addSec('mc')">🔘 اختيار من متعدد</button><button class="btn" onclick="addSec('fill')">✏️ أكمل الفراغ</button>
+<button class="btn" onclick="addSec('essay')">📄 سؤال مقالي</button><button class="btn" onclick="addSec('order')">🔀 رتب الكلمات</button>
+<button class="btn" onclick="addSec('picfill')">🖼️✏️ أكمل بالصورة</button><button class="btn" onclick="addSec('passage')">📖 قطعة قراءة</button>
+<button class="btn or" onclick="go('tBank')" style="grid-column:span 2">⭐ أضف من بنك الأسئلة</button></div></div>
+<div id="sumBox" class="sum"></div><div id="qList"></div>
+<button class="btn w" onclick="go('tPrev')">التالي: المعاينة والطباعة ←</button></section>
+
+<section id="tPrev" class="tab"><div class="card noprint">
+<div class="row"><div><label>النسخة</label><select id="ver"><option value="A">نموذج أ (الأصلي)</option><option value="B">نموذج ب (مخلوط)</option></select></div>
+<div><label>العرض</label><select id="mode"><option value="exam">ورقة الطالب</option><option value="key">نموذج الإجابة</option></select></div></div>
+<label style="font-size:17px"><input type="checkbox" id="big" style="width:auto;transform:scale(1.4);margin-left:8px">🔍 نسخة مكبرة لضعاف البصر</label>
+<div class="row"><button class="btn" onclick="outPdf(0)">📄 تنزيل PDF</button><button class="btn" onclick="outPdf(1)">📤 مشاركة PDF</button></div>
+<div class="row"><button class="btn or" onclick="outDocx(0)">⬇️ تنزيل Word</button><button class="btn or" onclick="outDocx(1)">📤 مشاركة Word</button></div>
+<button class="btn w alt" onclick="window.print()">🖨️ طباعة مباشرة</button>
+<div class="row"><button class="btn alt" onclick="saveJSON()">💾 حفظ الاختبار للتعديل لاحقًا</button><button class="btn alt" onclick="jsonIn.click()">📂 فتح اختبار محفوظ</button></div></div>
+<div class="pvwrap"><div class="paper" id="paper"></div></div></section>
+</main>
+<input type="file" id="imgIn" accept="image/*" style="display:none"><input type="file" id="jsonIn" style="display:none">
+<div id="tut"><div class="tn" id="tutN"></div><div class="tt" id="tutT"></div><div class="row" style="margin-top:10px"><button class="btn" id="tutNext">التالي ←</button><button class="btn alt" onclick="tutEnd()">تخطي</button></div></div>
+<div id="toast"></div><div id="shareReady"><div class="card"><div style="font-size:20px;font-weight:bold">✅ الملف جاهز</div><div class="hint" id="srName"></div><button class="btn w" id="srGo">📤 مشاركة / حفظ</button><button class="btn w alt" onclick="$('shareReady').style.display='none'">إلغاء</button></div></div>
+<script>
+const TN={order:'رتب الكلمات',picfill:'أكمل بالصورة',passage:'قطعة قراءة',tf:'صح وخطأ',match:'صل الكلمة بالصورة',img:'اختر الصورة الصحيحة',circle:'ضع دائرة حول الصورة',mc:'اختيار من متعدد',fill:'أكمل الفراغ',essay:'سؤال مقالي'};
+const DT={order:'رتب الكلمات التالية لتكوين جملة مفيدة:',picfill:'أكمل الفراغ بما يناسب الصورة:',passage:'اقرأ النص التالي ثم أجب عن الأسئلة:',tf:'ضع علامة ( ✓ ) أمام العبارة الصحيحة وعلامة ( ✗ ) أمام العبارة الخاطئة:',match:'صل بين الكلمة والصورة المناسبة لها:',img:'اختر الإجابة الصحيحة:',circle:'ضع دائرة حول ...',mc:'اختر الإجابة الصحيحة:',fill:'أكمل الفراغات التالية:',essay:'أجب عن الأسئلة التالية:'};
+const ORDN=['الأول','الثاني','الثالث','الرابع','الخامس','السادس','السابع','الثامن','التاسع','العاشر'],L='أبجد',HF=['title','year','grade','l1','l2','total'];
+const $=id=>document.getElementById(id),uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+function blank(h){return{v:3,id:uid(),name:'',fmt:{font:'times',size:'m'},h:h||{title:'',year:'',grade:'',l1:'',l2:'',total:'',logo:null},secs:[]}}
+function ensure(x){x.id=x.id||uid();x.fmt=x.fmt||{font:'times',size:'m'};x.v=3;return x}
+let S=blank(),DB=null;
+function idbOpen(){return new Promise((ok,no)=>{const r=indexedDB.open('examMakerDB',1);r.onupgradeneeded=()=>{const d=r.result;d.createObjectStore('exams',{keyPath:'id'});d.createObjectStore('bank',{keyPath:'id'});d.createObjectStore('meta')};r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error)})}
+function tx(store,mode,fn){return new Promise((ok,no)=>{const t=DB.transaction(store,mode),o=t.objectStore(store);let res;const q=fn(o);if(q)q.onsuccess=()=>res=q.result;t.oncomplete=()=>ok(res);t.onerror=()=>no(t.error);t.onabort=()=>no(t.error)})}
+const getAll=st=>tx(st,'readonly',o=>o.getAll()),put=(st,v,k)=>tx(st,'readwrite',o=>o.put(v,k)),del=(st,k)=>tx(st,'readwrite',o=>o.delete(k)),get=(st,k)=>tx(st,'readonly',o=>o.get(k));
+function exName(d){return d.name||d.h.title||'اختبار بدون عنوان'}
+let st;function save(){clearTimeout(st);$('saved').textContent='...';st=setTimeout(flush,300)}
+async function flush(){clearTimeout(st);if(!DB)return;try{S.updated=Date.now();await put('exams',{id:S.id,updated:S.updated,data:S});$('saved').textContent='محفوظ تلقائيًا ✓'}catch(e){$('saved').textContent='⚠️ ما انحفظ';toast('ما قدرت أحفظ: احفظ نسخة احتياطية')}}
+async function init(){try{DB=await idbOpen()}catch(e){toast('التخزين غير متاح');fillHead();renderList();return}
+let all=await getAll('exams');if(!all.length){let old=null;try{old=JSON.parse(localStorage.getItem('examMaker2'))}catch(e){}if(old&&old.h&&old.secs){ensure(old);await put('exams',{id:old.id,updated:Date.now(),data:old});all=await getAll('exams')}}
+const cur=await get('meta','current');const rec=all.find(r=>r.id==cur)||all.sort((a,b)=>b.updated-a.updated)[0];
+if(rec)S=ensure(rec.data);else{S=blank();await flush()}await put('meta',S.id,'current');fillHead();renderList();if(!localStorage.getItem('tutDone'))setTimeout(tutStart,400)}
+function toast(m){const t=$('toast');t.textContent=m;t.style.display='block';clearTimeout(t._);t._=setTimeout(()=>t.style.display='none',2200)}
+function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>go(b.dataset.t));
+function go(t){document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x.id==t));document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x.dataset.t==t));if(t=='tPrev')renderPrev();if(t=='tQs')renderList();if(t=='tList')renderExams();if(t=='tBank')renderBank();scrollTo(0,0)}
+// images: {d:dataURL,w,h}
+let pend=null,pendFmt='jpg';
+function pickImg(cb,fmt){pend=cb;pendFmt=fmt||'jpg';$('imgIn').value='';$('imgIn').click()}
+$('imgIn').onchange=e=>{const f=e.target.files[0];if(!f||!pend)return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const mx=pendFmt=='png'?300:480,sc=Math.min(1,mx/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(im.width*sc));c.height=Math.max(1,Math.round(im.height*sc));const g=c.getContext('2d');if(pendFmt!='png'){g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height)}g.drawImage(im,0,0,c.width,c.height);const o={d:pendFmt=='png'?c.toDataURL('image/png'):c.toDataURL('image/jpeg',.78),w:c.width,h:c.height};const cb=pend;pend=null;cb(o)};im.onerror=()=>toast('الصورة ما انفتحت');im.src=r.result};r.readAsDataURL(f)};
+// header
+function fillHead(){HF.forEach(k=>$('h_'+k).value=S.h[k]||'');$('f_font').value=S.fmt.font;$('f_size').value=S.fmt.size;$('logoBox').innerHTML=S.h.logo?`<img src="${S.h.logo.d}" style="max-height:60px"> <button class="btn alt sm" onclick="S.h.logo=null;save();fillHead()">إزالة</button>`:'لا يوجد شعار';renderTpl()}
+HF.forEach(k=>$('h_'+k).oninput=e=>{S.h[k]=e.target.value;save()});$('f_font').onchange=e=>{S.fmt.font=e.target.value;save()};$('f_size').onchange=e=>{S.fmt.size=e.target.value;save()};
+function tpls(){try{return JSON.parse(localStorage.getItem('examTpl2'))||[]}catch(e){return[]}}
+function saveTpl(){const n=prompt('اسم القالب:',S.h.l2||'قالبي');if(!n)return;const t=tpls().filter(x=>x.n!=n);const h=JSON.parse(JSON.stringify(S.h));delete h.total;t.push({n,h});try{localStorage.setItem('examTpl2',JSON.stringify(t));toast('تم حفظ القالب ✓')}catch(e){toast('ما قدرت أحفظ القالب')}renderTpl()}
+function renderTpl(){const t=tpls();$('tplList').innerHTML=t.map((x,i)=>`<div class="row" style="margin-top:6px"><button class="btn alt" onclick="useTpl(${i})">📋 ${esc(x.n)}</button><button class="btn red sm" style="flex:0 0 50px" onclick="delTpl(${i})">🗑️</button></div>`).join('')}
+function useTpl(i){Object.assign(S.h,JSON.parse(JSON.stringify(tpls()[i].h)));save();fillHead();toast('تم تطبيق القالب ✓')}
+function delTpl(i){if(!confirm('حذف القالب؟'))return;const t=tpls();t.splice(i,1);localStorage.setItem('examTpl2',JSON.stringify(t));renderTpl()}
+// sections
+function newItem(t){const it={id:uid(),text:'',img:null,ans:''};if(t=='tf')it.ok=true;if(t=='mc'){it.opts=['','','',''];it.correct=0}if(t=='img'||t=='circle'){it.imgs=[null,null];it.correct=0}if(t=='essay')it.lines=3;if(t=='passage'){it.k='short';it.opts=['','','',''];it.correct=0;it.ok=true;it.lines=2}return it}
+function addSec(t){const n=t=='circle'?1:t=='img'||t=='picfill'?2:3;S.secs.push({id:uid(),type:t,title:DT[t],marks:n,per:t=='img'?'item':'sec',passage:'',pimg:null,np:false,items:Array.from({length:n},()=>newItem(t))});save();renderList();setTimeout(()=>{const c=document.querySelectorAll('.sec');c[c.length-1].scrollIntoView({behavior:'smooth'})},50)}
+const SX=i=>S.secs[i];
+function setCount(si){const s=SX(si),n=Math.max(1,Math.min(20,parseInt($('cnt'+si).value)||1));if(n<s.items.length&&s.items.slice(n).some(x=>x.text||x.img)&&!confirm('بينحذف آخر البنود، متأكد؟'))return;while(s.items.length<n)s.items.push(newItem(s.type));s.items.length=n;save();renderList()}
+function mvSec(i,d){const j=i+d;if(j<0||j>=S.secs.length)return;[S.secs[i],S.secs[j]]=[S.secs[j],S.secs[i]];save();renderList()}
+function delSec(i){if(!confirm('حذف السؤال كامل؟'))return;S.secs.splice(i,1);save();renderList()}
+function mvIt(si,ii,d){const a=SX(si).items,j=ii+d;if(j<0||j>=a.length)return;[a[ii],a[j]]=[a[j],a[ii]];save();renderList()}
+function delIt(si,ii){if(!confirm('حذف البند؟'))return;SX(si).items.splice(ii,1);if(!SX(si).items.length)SX(si).items.push(newItem(SX(si).type));save();renderList()}
+function setImg(si,ii,k){pickImg(o=>{const it=SX(si).items[ii];if(k==null)it.img=o;else it.imgs[k]=o;save();renderList()})}
+function V(si,ii,key,val){const it=SX(si).items[ii];it[key]=val;save()}
+function setNImgs(si,ii,n){const it=SX(si).items[ii];while(it.imgs.length<n)it.imgs.push(null);it.imgs.length=n;if(it.correct>=n)it.correct=0;save();renderList()}
+function imgBtn(si,ii,img){return`<div class="imgpick">${img?`<img src="${img.d}"><button class="btn alt sm" onclick="SX(${si}).items[${ii}].img=null;save();renderList()">✖ إزالة</button>`:''}<button class="btn alt sm" onclick="setImg(${si},${ii})">📷 ${img?'تغيير':'إضافة'} صورة</button></div>`}
+function secMarks(s){return +s.marks||0}
+function total(){return S.h.total!==''&&S.h.total!=null&&!isNaN(parseFloat(S.h.total))?parseFloat(S.h.total):S.secs.reduce((a,s)=>a+secMarks(s),0)}
+function renderList(){const sm=S.secs.reduce((a,s)=>a+secMarks(s),0),T=parseFloat(S.h.total);$('sumBox').textContent=`عدد الأسئلة: ${S.secs.length} — مجموع الدرجات: ${sm}`+(T&&T!=sm?` ⚠️ (الدرجة الكلية ${T})`:'');
+if(!S.secs.length){$('qList').innerHTML='<div class="card hint">ما فيه أسئلة للحين. اختر نوع السؤال من فوق.</div>';return}
+$('qList').innerHTML=S.secs.map((s,si)=>{const imgT=s.type=='img'||s.type=='circle';
+let x=`<div class="card sec"><div class="sh"><span>السؤال ${ORDN[si]||si+1} — ${TN[s.type]}</span><span><button class="btn alt sm" onclick="toBank(${si})">⭐ للبنك</button> <button class="btn alt sm" onclick="mvSec(${si},-1)">⬆️</button> <button class="btn alt sm" onclick="mvSec(${si},1)">⬇️</button> <button class="btn red sm" onclick="delSec(${si})">🗑️</button></span></div>
+<label>عنوان السؤال</label><input value="${esc(s.title)}" oninput="SX(${si}).title=this.value;save()">
+<label><input type="checkbox" style="width:auto" ${s.np?'checked':''} onchange="SX(${si}).np=this.checked;save()"> ابدأ هذا السؤال بصفحة جديدة</label>
+${s.type=='passage'?`<label>نص القطعة</label><textarea style="min-height:120px" oninput="SX(${si}).passage=this.value;save()">${esc(s.passage)}</textarea><div class="imgpick">${s.pimg?`<img src="${s.pimg.d}"><button class="btn alt sm" onclick="SX(${si}).pimg=null;save();renderList()">✖ إزالة</button>`:''}<button class="btn alt sm" onclick="pickImg(o=>{SX(${si}).pimg=o;save();renderList()})">📷 صورة للقطعة</button></div>`:''}
+<div class="row"><div><label>درجة السؤال</label><input type="number" inputmode="decimal" step="0.5" value="${s.marks}" oninput="SX(${si}).marks=this.value;save();renderSum()"></div>
+<div><label>عدد البنود</label><input id="cnt${si}" type="number" min="1" max="20" value="${s.items.length}"></div><button class="btn sm" style="flex:0 0 auto" onclick="setCount(${si})">تطبيق</button></div>
+${s.items.length>1?`<label>مربع الدرجة</label><select onchange="SX(${si}).per=this.value;save()"><option value="sec" ${s.per!='item'?'selected':''}>مربع واحد للسؤال كله</option><option value="item" ${s.per=='item'?'selected':''}>مربع لكل بند (الدرجة تتقسم)</option></select>`:''}`;
+s.items.forEach((it,ii)=>{x+=`<div class="it"><div class="ih"><span>البند ${ii+1}</span><span><button class="btn alt sm" onclick="mvIt(${si},${ii},-1)">⬆️</button> <button class="btn alt sm" onclick="delIt(${si},${ii})">🗑️</button></span></div>
+<input value="${esc(it.text)}" placeholder="${s.type=='match'?'الكلمة':imgT?'نص السؤال (اختياري)':s.type=='fill'||s.type=='picfill'?'اكتب ... مكان الفراغ':s.type=='order'?'اكتب الجملة مرتبة صح (التطبيق يخلطها بروحه)':'نص السؤال'}" oninput="V(${si},${ii},'text',this.value)">`;
+if(!imgT&&s.type!='order')x+=imgBtn(si,ii,it.img);const K=s.type=='passage'?it.k:s.type;
+if(s.type=='passage')x+=`<label>نوع السؤال الفرعي</label><select onchange="V(${si},${ii},'k',this.value);renderList()">${[['short','إجابة قصيرة'],['tf','صح وخطأ'],['mc','اختيار من متعدد']].map(([a,b])=>`<option value="${a}" ${it.k==a?'selected':''}>${b}</option>`).join('')}</select>`;
+if(K=='tf')x+=`<div class="tf" style="margin-top:6px"><button class="${it.ok?'on':''}" onclick="V(${si},${ii},'ok',true);renderList()">✓ صح</button><button class="${!it.ok?'on':''}" onclick="V(${si},${ii},'ok',false);renderList()">✗ خطأ</button></div>`;
+if(K=='mc')x+=it.opts.map((o,k)=>`<div class="opt"><input type="radio" name="r${it.id}" ${it.correct==k?'checked':''} onchange="V(${si},${ii},'correct',${k})"><input value="${esc(o)}" placeholder="الخيار ${L[k]}" oninput="SX(${si}).items[${ii}].opts[${k}]=this.value;save()"></div>`).join('')+'<div class="hint">الخيار الفاضي ما يطلع بالورقة.</div>';
+if(imgT)x+=`<div class="row"><div><label>عدد الصور</label><select onchange="setNImgs(${si},${ii},+this.value)">${[2,3,4].map(n=>`<option ${it.imgs.length==n?'selected':''}>${n}</option>`).join('')}</select></div></div><div class="hint">اضغط «الصحيحة» تحت الصورة الصح.</div><div class="igrid">`+it.imgs.map((im,k)=>`<div class="cell ${it.correct==k?'ok':''}">${im?`<img src="${im.d}">`:'<div class="hint">بدون صورة</div>'}<button class="btn alt sm" onclick="setImg(${si},${ii},${k})">📷</button> <button class="btn sm ${it.correct==k?'':'alt'}" onclick="V(${si},${ii},'correct',${k});renderList()">✔ الصحيحة</button></div>`).join('')+'</div>';
+if(K=='fill'||K=='essay'||K=='picfill'||K=='short')x+=`<label>${K=='fill'||K=='picfill'?'الإجابة':'الإجابة النموذجية (اختياري)'}</label><input value="${esc(it.ans)}" oninput="V(${si},${ii},'ans',this.value)">`;
+if(K=='essay'||K=='short')x+=`<label>عدد الأسطر</label><input type="number" min="1" max="15" value="${it.lines||3}" oninput="V(${si},${ii},'lines',+this.value||3)">`;
+x+='</div>'});return x+'</div>'}).join('')}
+function renderSum(){const sm=S.secs.reduce((a,s)=>a+secMarks(s),0);$('sumBox').textContent=`عدد الأسئلة: ${S.secs.length} — مجموع الدرجات: ${sm}`}
+// versions
+function rng(seed){return()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296}}
+function shuf(a,r){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function fmt(n){n=Math.round(n*100)/100;return String(n)}
+function build(ver){const r=rng(ver=='B'?97531:24680);return S.secs.map(s0=>{const s=JSON.parse(JSON.stringify(s0));
+s.items=s.items.filter(it=>it.text||it.img||(it.imgs&&it.imgs.some(Boolean)));s.items.forEach((it,i)=>it.n=i+1);
+if(s.type=='passage')s.items.forEach(it=>{if(it.k!='mc')delete it.opts});
+if(s.type=='order')s.items.forEach(it=>{const w=it.text.trim().split(/\s+/);let p=shuf(w,r);if(w.length>1&&p.join(' ')==w.join(' '))p=p.slice(1).concat(p[0]);it.words=p});
+s.items.forEach(it=>{if(!(s.type=='mc'||it.k=='mc')||!it.opts)return;const keep=it.opts.map((o,k)=>k).filter(k=>it.opts[k].trim());it.correct=keep.indexOf(it.correct);it.opts=keep.map(k=>it.opts[k])});
+if(ver=='B'){if(s.type!='match')s.items=shuf(s.items,r);s.items.forEach(it=>{if(it.opts&&it.opts.length){const idx=shuf(it.opts.map((_,i)=>i),r);it.correct=idx.indexOf(it.correct);it.opts=idx.map(i=>it.opts[i])}if(it.imgs){const idx=shuf(it.imgs.map((_,i)=>i),r);it.correct=idx.indexOf(it.correct);it.imgs=idx.map(i=>it.imgs[i])}})}
+if(s.type=='match'){const w=s.items.map((it,i)=>({img:it.img,k:i+1}));let p=shuf(w,r);if(p.length>1&&p.every((x,i)=>x.k==i+1))p=p.slice(1).concat(p[0]);s.col=p}
+s.items.forEach((it,i)=>it.n=i+1);
+if(s.type=='match'){const m={};S.secs.find(x=>x.id==s.id).items.forEach((o,i)=>m[o.id]=i);}return s}).filter(s=>s.items.length)}
+// preview
+function gbox(m){return`<div class="gbox"><div></div><div>${fmt(m)}</div></div>`}
+let RP=0;
+const FF={times:'"Times New Roman","Noto Naskh Arabic",serif',arial:'Arial,"Noto Sans Arabic",sans-serif',tahoma:'Tahoma,"Noto Sans Arabic",sans-serif'},SZ={s:.9,m:1,l:1.15};
+async function renderPrev(){const my=++RP,v=$('ver').value,key=$('mode').value=='key',h=S.h,secs=build(v),big=$('big').checked;const B=[];const P0=$('paper');P0.classList.toggle('big',big);P0.style.fontFamily=FF[S.fmt.font]||FF.times;P0.style.fontSize=(16*(SZ[S.fmt.size]||1)*(big?1.4:1))+'px';
+B.push({h:`<div class="hd"><div class="r"><div>${esc(h.title)}</div><div>${esc(h.year?'العام الدراسي '+h.year:'')}</div><div>${esc(h.grade)}</div>${v=='B'?'<div>نموذج (ب)</div>':''}</div>
+<div class="c">${h.logo?`<img src="${h.logo.d}">`:''}${esc(h.l1)}<br>${esc(h.l2)}</div>
+<div class="l">${key?'<div class="keytag" style="font-size:18px">نموذج الإجابة</div>':'<div>الاسم : ......................................</div><div>الصف: ......................................</div>'}<div class="g"><span>الدرجة :</span>${gbox(total())}</div></div></div>`});
+secs.forEach((s,si)=>{B.push({h:`<h3 class="st">السؤال ${ORDN[si]||si+1}: ${esc(s.title)}</h3>`,keep:1,brk:s.np});if(s.type=='passage'&&(s.passage||s.pimg))B.push({h:`<div class="psg">${s.pimg?`<img src="${s.pimg.d}">`:''}${esc(s.passage).replace(/\n/g,'<br>')}</div>`,keep:1});const per=s.per=='item'&&s.items.length>1,pm=secMarks(s)/s.items.length;
+const mr=(it,i)=>{const c=s.col[i];return`<div class="mrow"><span class="tx">${it.n}. ${esc(it.text)}</span><span class="im">${key?`<span class="badge">${c.k}</span>`:''}${c.img?`<img src="${c.img.d}">`:'<i>(صورة)</i>'}</span></div>`};
+s.items.forEach((it,i)=>B.push({h:`<div class="unit"><div class="ct">${s.type=='match'?mr(it,i):itemHTML(s,it,key)}</div>${per?gbox(pm):i==0?gbox(s.marks):'<div class="gsp"></div>'}</div>`}))});
+const P=$('paper');P.style.zoom=1;P.innerHTML=`<div class="page" style="position:absolute;visibility:hidden;left:-3000px"><div class="frame"><div class="body" id="meas">${B.map(b=>`<div class="blk">${b.h}</div>`).join('')}</div></div></div>`;
+await Promise.all([...P.querySelectorAll('img')].map(i=>i.decode().catch(()=>0)));if(my!=RP)return;
+const M=$('meas'),H=M.clientHeight,hs=[...M.children].map(e=>e.offsetHeight);const pages=[[]];let used=0;
+B.forEach((b,i)=>{let need=hs[i];if(b.keep&&i+1<B.length)need+=hs[i+1]+(B[i+1].keep&&i+2<B.length?hs[i+2]:0);if((b.brk||used+need>H)&&used>0){pages.push([]);used=0}pages[pages.length-1].push(b.h);used+=hs[i]});
+const n=pages.length;P.innerHTML=pages.map((p,i)=>`<div class="page"><div class="frame"><div class="body">${p.map(x=>`<div class="blk">${x}</div>`).join('')}</div><div class="pno">صفحة ${i+1} من ${n}</div></div></div>`).join('');fit()}
+function itemHTML(s,it,key){const im=it.img?`<img src="${it.img.d}">`:'';const one=s.items.length==1&&!it.text;
+switch(s.type){case'tf':return`<div class="pi"><span class="tx">${it.n}. ${esc(it.text)} &nbsp; ( ${key?`<b class="ok">${it.ok?'✓':'✗'}</b>`:'&nbsp;&nbsp;&nbsp;'} )</span>${im}</div>`;
+case'img':case'circle':return(one?'':`<div style="font-weight:bold;font-size:18px">${s.items.length>1?it.n+'. ':''}${esc(it.text)}</div>`)+`<div class="ichoose">${it.imgs.map((g,k)=>`<span class="${key&&k==it.correct?'ok':''}">${g?`<img src="${g.d}">`:'(صورة)'}</span>`).join('')}</div>`;
+case'mc':return`<div class="pi"><span class="tx">${it.n}. ${esc(it.text)}<div class="ops">${it.opts.map((o,k)=>`<span class="${key&&k==it.correct?'ok':''}">${key&&k==it.correct?'☑':'○'} ${L[k]}) ${esc(o)}</span>`).join('')}</div></span>${im}</div>`;
+case'fill':return`<div class="pi"><span class="tx">${it.n}. ${esc(it.text)}${key?`<div class="ok">الإجابة: ${esc(it.ans)}</div>`:''}</span>${im}</div>`;
+case'essay':return`<div class="pi"><span class="tx">${it.n}. ${esc(it.text)}</span>${im}</div>`+(key?`<div class="ok">${esc(it.ans||'—')}</div>`:'<div class="ln"></div>'.repeat(it.lines||3));
+case'match':return`<div class="mrow"><span class="tx">${it.n}. ${esc(it.text)}</span><span class="im">${im}</span></div>`;
+case'order':return`<div class="pi"><span class="tx">${it.n}. <span class="wds">${(it.words||[]).map(w=>`<span>${esc(w)}</span>`).join(' ')}</span></span></div>`+(key?`<div class="ok">${esc(it.text)}</div>`:'<div class="ln"></div>');
+case'picfill':return`<div class="pi pf">${im}<span class="tx">${it.n}. ${esc(it.text)}${key?`<div class="ok">الإجابة: ${esc(it.ans)}</div>`:''}</span></div>`;
+case'passage':return itemHTML({type:it.k=='short'?'essay':it.k,items:[it,it]},it,key)}}
+function fit(){const w=Math.min($('tPrev').clientWidth,document.documentElement.clientWidth-24)-20,p=$('paper');p.style.zoom=w<794?(w/794):1}
+addEventListener('resize',()=>{if($('tPrev').classList.contains('on'))fit()});$('ver').onchange=$('mode').onchange=$('big').onchange=renderPrev;
+// files
+function dl(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500)}
+function fname(){return (S.h.title||'اختبار').replace(/[\\/:*?"<>|]/g,'').slice(0,60)}
+function enc(o){const u=new TextEncoder().encode(JSON.stringify(o));let b='';for(let i=0;i<u.length;i+=32768)b+=String.fromCharCode.apply(null,u.subarray(i,i+32768));return 'EXAMFILE1:'+btoa(b)}
+function dec(t){t=t.trim();if(t.startsWith('EXAMFILE1:')){const b=atob(t.slice(10)),u=new Uint8Array(b.length);for(let i=0;i<b.length;i++)u[i]=b.charCodeAt(i);t=new TextDecoder().decode(u)}return JSON.parse(t)}
+async function saveJSON(){await save2(new Blob([enc(S)],{type:'application/octet-stream'}),'اختبار - '+fname()+'.exam','application/octet-stream');alert('تم الحفظ ✓\nهذا ملف خاص بالتطبيق، افتحه من زر (فتح اختبار محفوظ) داخل التطبيق')}
+$('jsonIn').onchange=e=>{const f=e.target.files[0];if(!f)return;f.text().then(async t=>{let s;try{s=dec(t)}catch(_){return toast('الملف غير صالح')}if(s.kind=='backup')return importBackup(s);if(!s.h||!Array.isArray(s.secs))return toast('الملف غير صالح');await flush();s=ensure(s);s.id=uid();S=s;await flush();await put('meta',S.id,'current');fillHead();renderList();go('tHead');toast('تم فتح الاختبار وإضافته لاختباراتي ✓')});e.target.value=''};
+async function newExam(){await flush();const h=JSON.parse(JSON.stringify(S.h));h.total='';const f=S.fmt;S=blank(h);S.fmt={...f};await flush();await put('meta',S.id,'current');fillHead();renderList();go('tHead');toast('اختبار جديد ✓ (نفس الترويسة)')}
+// ZIP
+const CT=(()=>{const t=[];for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}return t})();
+function crc(b){let c=~0;for(let i=0;i<b.length;i++)c=CT[(c^b[i])&255]^(c>>>8);return(~c)>>>0}
+function zip(files){const enc=new TextEncoder(),parts=[],cen=[];let off=0;
+for(const[name,data]of files){const nb=enc.encode(name),d=typeof data=='string'?enc.encode(data):data,c=crc(d);
+const lh=new DataView(new ArrayBuffer(30));lh.setUint32(0,0x04034b50,true);lh.setUint16(4,20,true);lh.setUint16(6,0x0800,true);lh.setUint32(14,c,true);lh.setUint32(18,d.length,true);lh.setUint32(22,d.length,true);lh.setUint16(26,nb.length,true);
+parts.push(lh,nb,d);const ch=new DataView(new ArrayBuffer(46));ch.setUint32(0,0x02014b50,true);ch.setUint16(4,20,true);ch.setUint16(6,20,true);ch.setUint16(8,0x0800,true);ch.setUint32(16,c,true);ch.setUint32(20,d.length,true);ch.setUint32(24,d.length,true);ch.setUint16(28,nb.length,true);ch.setUint32(42,off,true);cen.push(ch,nb);off+=30+nb.length+d.length}
+const cs=cen.reduce((a,x)=>a+x.byteLength,0),e=new DataView(new ArrayBuffer(22));e.setUint32(0,0x06054b50,true);e.setUint16(8,files.length,true);e.setUint16(10,files.length,true);e.setUint32(12,cs,true);e.setUint32(16,off,true);
+return new Blob([...parts,...cen,e],{type:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'})}
+// DOCX
+const xe=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let FONT="Times New Roman",FSM=1,PICM=1;
+function run(t,o={}){const z=Math.round((o.sz||24)*FSM);return`<w:r><w:rPr><w:rFonts w:ascii="${FONT}" w:hAnsi="${FONT}" w:cs="${FONT}"/>${o.b?'<w:b/><w:bCs/>':''}${o.c?`<w:color w:val="${o.c}"/>`:''}<w:sz w:val="${z}"/><w:szCs w:val="${z}"/>${o.u?'<w:u w:val="single"/>':''}<w:rtl/></w:rPr><w:t xml:space="preserve">${xe(t)}</w:t></w:r>`}
+function para(runs,o={}){return`<w:p><w:pPr>${o.dot?'<w:pBdr><w:bottom w:val="dotted" w:sz="6" w:space="1" w:color="000000"/></w:pBdr>':''}${o.kn?'<w:keepNext/>':''}${o.pb?'<w:pageBreakBefore/>':''}<w:bidi/><w:spacing w:before="${o.bf??40}" w:after="${o.af??40}"/>${o.ind?`<w:ind w:right="${o.ind}"/>`:''}<w:jc w:val="${o.jc||'right'}"/></w:pPr>${Array.isArray(runs)?runs.join(''):runs}</w:p>`}
+let MEDIA;function pic(img,maxW,maxH){if(!img)return run('(صورة)',{c:'999999'});maxW*=PICM;maxH*=PICM;const sc=Math.min(maxW/img.w,maxH/img.h,1.5*PICM),cx=Math.round(img.w*sc*9525),cy=Math.round(img.h*sc*9525);const png=img.d.startsWith('data:image/png'),n=MEDIA.length+1,id='rImg'+n;MEDIA.push({id,name:'img'+n+(png?'.png':'.jpg'),d:img.d});
+return`<w:r><w:drawing><wp:inline distT="0" distB="0" distL="0" distR="0"><wp:extent cx="${cx}" cy="${cy}"/><wp:docPr id="${n}" name="img${n}"/><a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:nvPicPr><pic:cNvPr id="${n}" name="img${n}"/><pic:cNvPicPr/></pic:nvPicPr><pic:blipFill><a:blip r:embed="${id}"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill><pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="${cx}" cy="${cy}"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr></pic:pic></a:graphicData></a:graphic></wp:inline></w:drawing></w:r>`}
+const B1='<w:tblBorders><w:top w:val="single" w:sz="8"/><w:left w:val="single" w:sz="8"/><w:bottom w:val="single" w:sz="8"/><w:right w:val="single" w:sz="8"/><w:insideH w:val="single" w:sz="8"/><w:insideV w:val="single" w:sz="8"/></w:tblBorders>',B0='<w:tblBorders><w:top w:val="nil"/><w:left w:val="nil"/><w:bottom w:val="nil"/><w:right w:val="nil"/><w:insideH w:val="nil"/><w:insideV w:val="nil"/></w:tblBorders>';
+function tbl(widths,rows,o={}){return`<w:tbl><w:tblPr><w:bidiVisual/><w:tblW w:w="${widths.reduce((a,b)=>a+b,0)}" w:type="dxa"/>${o.jc?`<w:jc w:val="${o.jc}"/>`:''}${o.border?B1:B0}<w:tblLayout w:type="fixed"/></w:tblPr><w:tblGrid>${widths.map(w=>`<w:gridCol w:w="${w}"/>`).join('')}</w:tblGrid>${rows.map(r=>`<w:tr><w:trPr><w:cantSplit/>${o.h?`<w:trHeight w:val="${o.h}"/>`:''}</w:trPr>${r.map((c,i)=>`<w:tc><w:tcPr><w:tcW w:w="${widths[i]}" w:type="dxa"/>${o.bb&&o.bb[i]?'<w:tcBorders><w:bottom w:val="single" w:sz="12"/></w:tcBorders>':''}<w:vAlign w:val="${o.va||'center'}"/></w:tcPr>${c}${/<\/w:tbl>$/.test(c)||!c?'<w:p/>':''}</w:tc>`).join('')}</w:tr>`).join('')}</w:tbl>`}
+const gboxX=m=>tbl([850],[[''],[para(run(fmt(m),{b:1}),{jc:'center',bf:0,af:0})]],{border:1,h:420,jc:'center'});
+function itemX(s,it,key){const W=8200;switch(s.type){
+case'tf':return tbl([6000,2200],[[para([run(it.n+'. '+it.text+'   ( '),key?run(it.ok?'✓':'✗',{b:1,c:'0A7A3A'}):run('     '),run(' )')]),it.img?para(pic(it.img,110,70),{jc:'center'}):'']]);
+case'img':case'circle':{const n=it.imgs.length,w=Math.floor(W/n);return(s.items.length==1&&!it.text?'':para(run((s.items.length>1?it.n+'. ':'')+it.text,{b:1,sz:28}),{bf:120}))+tbl(Array(n).fill(w),[it.imgs.map((g,k)=>para(pic(g,140,100),{jc:'center'})+(key&&k==it.correct?para(run('✔ الإجابة الصحيحة',{b:1,c:'0A7A3A'}),{jc:'center'}):''))])}
+case'mc':return tbl([6000,2200],[[para(run(it.n+'. '+it.text))+it.opts.map((o,k)=>{const ok=key&&k==it.correct;return para(run(`${ok?'☑':'○'} ${L[k]}) ${o}`,ok?{b:1,c:'0A7A3A'}:{}),{ind:400,bf:0,af:0})}).join(''),it.img?para(pic(it.img,110,70),{jc:'center'}):'']]);
+case'fill':return tbl([6000,2200],[[para(run(it.n+'. '+it.text))+(key?para(run('الإجابة: '+it.ans,{b:1,c:'0A7A3A'}),{ind:300}):''),it.img?para(pic(it.img,110,70),{jc:'center'}):'']]);
+case'order':return para(run(it.n+'.   '+(it.words||[]).join('   /   ')))+(key?para(run(it.text,{b:1,c:'0A7A3A'}),{ind:300}):para(run(' '),{dot:1,bf:200,af:0}));
+case'picfill':return tbl([2400,5800],[[it.img?para(pic(it.img,150,100),{jc:'center'}):'',para(run(it.n+'. '+it.text))+(key?para(run('الإجابة: '+it.ans,{b:1,c:'0A7A3A'}),{ind:300}):'')]]);
+case'passage':return itemX({type:it.k=='short'?'essay':it.k,items:[it,it]},it,key);
+case'essay':return tbl([6000,2200],[[para(run(it.n+'. '+it.text)),it.img?para(pic(it.img,110,70),{jc:'center'}):'']])+(key?para(run(it.ans||'—',{c:'0A7A3A'}),{ind:300}):Array.from({length:it.lines||3},()=>para(run(' '),{dot:1,bf:160,af:0})).join(''))}}
+function docXml(ver,key){MEDIA=[];const h=S.h,secs=build(ver);let b='';
+const R=[para(run(h.title||'',{b:1,u:1,sz:21}),{bf:30,af:30,jc:'center'}),para(run(h.year?'العام الدراسي '+h.year:'',{b:1,u:1,sz:21}),{bf:30,af:30,jc:'center'}),para(run(h.grade||'',{b:1,u:1,sz:21}),{bf:30,af:30,jc:'center'})];if(ver=='B')R.push(para(run('نموذج (ب)',{b:1,sz:22}),{bf:30,af:30,jc:'center'}));
+const C=(h.logo?para(pic(h.logo,130,70),{jc:'center',bf:0,af:0}):'')+para(run(h.l1||'',{b:1,sz:20}),{jc:'center',bf:0,af:0})+para(run(h.l2||'',{b:1,sz:20}),{jc:'center',bf:0,af:0});
+const Lc=(key?para(run('نموذج الإجابة',{b:1,c:'C0392B',sz:28}),{jc:'center'}):para(run('الاسم : ................................',{b:1,sz:22}))+para(run('الصف: ................................',{b:1,sz:22})))+tbl([1500,1000],[[para(run('الدرجة :',{b:1,sz:22})),gboxX(total())]]);
+b+=tbl([4100,2800,3000],[[R.join(''),C,Lc]],{va:'top',bb:[1,1,1]});
+secs.forEach((s,si)=>{b+=para(run(`السؤال ${ORDN[si]||si+1}: ${s.title}`,{b:1,u:1,sz:26}),{bf:200,af:80,kn:1,pb:s.np&&si>0});if(s.type=='passage'&&(s.passage||s.pimg))b+=tbl([9700],[[(s.pimg?para(pic(s.pimg,160,120),{jc:'left'}):'')+String(s.passage||'').split('\n').map(l=>para(run(l),{jc:'both'})).join('')]],{border:1});const per=s.per=='item'&&s.items.length>1,pm=secMarks(s)/s.items.length;
+const mx=(it,i)=>{const c=s.col[i];return[para(run(it.n+'. '+it.text,{b:1,sz:26})),para((key?run('('+c.k+') ',{b:1,c:'C0392B'}):'')+pic(c.img,120,62),{jc:'center'})]};
+let rows;if(per)rows=s.items.map((it,i)=>[s.type=='match'?tbl([5200,3000],[mx(it,i)]):itemX(s,it,key),gboxX(pm)]);
+else if(s.type=='match')rows=s.items.map((it,i)=>[tbl([5200,3000],[mx(it,i)]),i==0?gboxX(s.marks):'']);
+else rows=s.items.map((it,i)=>[itemX(s,it,key),i==0?gboxX(s.marks):'']);
+b+=tbl([8400,1300],rows,{va:'top'})});
+return`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"><w:body>${b}<w:p/><w:sectPr><w:footerReference w:type="default" r:id="rFt"/><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="900" w:right="1000" w:bottom="1200" w:left="1000" w:header="400" w:footer="750" w:gutter="0"/><w:pgBorders w:offsetFrom="page">${['top','left','bottom','right'].map(k=>`<w:${k} w:val="double" w:sz="12" w:space="24" w:color="000000"/>`).join('')}</w:pgBorders><w:bidi/></w:sectPr></w:body></w:document>`}
+const FOOT='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:ftr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:p><w:pPr><w:bidi/><w:jc w:val="center"/></w:pPr>'+run('صفحة ',{sz:20})+'<w:fldSimple w:instr=" PAGE "><w:r><w:rPr><w:sz w:val="20"/></w:rPr><w:t>1</w:t></w:r></w:fldSimple>'+run(' من ',{sz:20})+'<w:fldSimple w:instr=" NUMPAGES "><w:r><w:rPr><w:sz w:val="20"/></w:rPr><w:t>1</w:t></w:r></w:fldSimple>'+'</w:p></w:ftr>';
+function b64(d){const bin=atob(d.split(',')[1]),u=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);return u}
+function makeDocx(ver,key){const doc=docXml(ver,key);const f=[['[Content_Types].xml','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/><Default Extension="jpg" ContentType="image/jpeg"/><Override PartName="/word/footer1.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.footer+xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>'],
+['_rels/.rels','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>'],
+['word/document.xml',doc],['word/footer1.xml',FOOT],['word/_rels/document.xml.rels','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rFt" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer" Target="footer1.xml"/>'+MEDIA.map(m=>`<Relationship Id="${m.id}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/${m.name}"/>`).join('')+'</Relationships>']];
+MEDIA.forEach(m=>f.push(['word/media/'+m.name,b64(m.d)]));return zip(f)}
+// ===== outputs =====
+function outName(ext){const v=$('ver').value,k=$('mode').value=='key',b=$('big').checked;return fname()+(v=='B'?' - نموذج ب':' - نموذج أ')+(k?' - الإجابة':'')+(b?' - مكبر':'')+'.'+ext}
+function docxBlob(){const b=$('big').checked;FONT={times:'Times New Roman',arial:'Arial',tahoma:'Tahoma'}[S.fmt.font]||'Times New Roman';FSM=(SZ[S.fmt.size]||1)*(b?1.4:1);PICM=b?1.5:1;try{return makeDocx($('ver').value,$('mode').value=='key')}finally{FSM=1;PICM=1}}
+const IOS=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1),STANDALONE=navigator.standalone||matchMedia('(display-mode: standalone)').matches;
+function canShareFile(file){try{return !!(navigator.canShare&&navigator.share&&navigator.canShare({files:[file]}))}catch(e){return false}}
+async function share(blob,name,mime,again){const file=new File([blob],name,{type:mime});
+if(canShareFile(file)){try{await navigator.share({files:[file],title:name});return true}catch(e){if(e.name=='AbortError')return true;if(e.name=='NotAllowedError'&&!again){$('srName').textContent=name;$('shareReady').style.display='flex';$('srGo').onclick=()=>{$('shareReady').style.display='none';share(blob,name,mime,1)};return true}}}
+dl(blob,name);if(!IOS)toast('المشاركة غير مدعومة هني، نزلت الملف بدالها');return false}
+function save2(blob,name,mime){if(IOS)return share(blob,name,mime);dl(blob,name);return Promise.resolve(true)}
+const DOCX_MIME='application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+async function outDocx(sh){if(!S.secs.length)return toast('أضف أسئلة أول');const b=docxBlob(),n=outName('docx');if(sh)await share(b,n,DOCX_MIME);else{await save2(b,n,DOCX_MIME);toast('تم تجهيز ملف Word ✓')}}
+function dlDocx(){outDocx(0)}
+// PDF: render each page via SVG foreignObject -> canvas -> JPEG -> minimal PDF
+async function pageJpeg(pg){const css=document.querySelector('style').textContent,P=$('paper');
+const xml=new XMLSerializer().serializeToString(pg);const W=794,H=1122,sc=IOS?1.6:2;
+const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><foreignObject width="100%" height="100%"><div xmlns="http://www.w3.org/1999/xhtml" class="${P.className}" dir="rtl" style="font-family:${P.style.fontFamily.replace(/"/g,"'")};font-size:${P.style.fontSize};width:${W}px;height:${H}px"><style>${css.replace(/</g,'\\3c ')}</style>${xml}</div></foreignObject></svg>`;
+const im=new Image();im.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);await im.decode();
+const c=document.createElement('canvas');c.width=W*sc;c.height=H*sc;const g=c.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);g.drawImage(im,0,0,c.width,c.height);
+const bl=await new Promise((ok,no)=>{try{c.toBlob(b=>b?ok(b):no(new Error('blob')),'image/jpeg',.82)}catch(e){no(e)}});const r={d:new Uint8Array(await bl.arrayBuffer()),w:c.width,h:c.height};c.width=c.height=0;return r}
+function pdfDoc(imgs){const te=new TextEncoder(),parts=[],off=[];let len=0;const add=x=>{const u=typeof x=='string'?te.encode(x):x;parts.push(u);len+=u.length};
+add('%PDF-1.4\n');const n=imgs.length,kids=imgs.map((_,i)=>`${3+3*i} 0 R`).join(' ');
+off[1]=len;add('1 0 obj\n<</Type/Catalog/Pages 2 0 R>>\nendobj\n');off[2]=len;add(`2 0 obj\n<</Type/Pages/Kids[${kids}]/Count ${n}>>\nendobj\n`);
+imgs.forEach((im,i)=>{const p=3+3*i,cn=p+1,ix=p+2,cs='q 595.28 0 0 841.89 0 0 cm /Im0 Do Q';
+off[p]=len;add(`${p} 0 obj\n<</Type/Page/Parent 2 0 R/MediaBox[0 0 595.28 841.89]/Resources<</XObject<</Im0 ${ix} 0 R>>>>/Contents ${cn} 0 R>>\nendobj\n`);
+off[cn]=len;add(`${cn} 0 obj\n<</Length ${cs.length}>>\nstream\n${cs}\nendstream\nendobj\n`);
+off[ix]=len;add(`${ix} 0 obj\n<</Type/XObject/Subtype/Image/Width ${im.w}/Height ${im.h}/ColorSpace/DeviceRGB/BitsPerComponent 8/Filter/DCTDecode/Length ${im.d.length}>>\nstream\n`);add(im.d);add('\nendstream\nendobj\n')});
+const N=3+3*n,x=len;add(`xref\n0 ${N}\n0000000000 65535 f \n`+Array.from({length:N-1},(_,i)=>String(off[i+1]).padStart(10,'0')+' 00000 n \n').join('')+`trailer\n<</Size ${N}/Root 1 0 R>>\nstartxref\n${x}\n%%EOF`);
+return new Blob(parts,{type:'application/pdf'})}
+let busy=0;async function makePdf(){await renderPrev();const pages=[...$('paper').querySelectorAll('.page')],imgs=[];for(const p of pages)imgs.push(await pageJpeg(p));return pdfDoc(imgs)}
+async function outPdf(sh){if(!S.secs.length)return toast('أضف أسئلة أول');if(busy)return;busy=1;toast('جاري تجهيز PDF...');try{const b=await makePdf(),n=outName('pdf');if(sh)await share(b,n,'application/pdf');else{await save2(b,n,'application/pdf');toast('تم تجهيز PDF ✓')}}catch(e){console.log(e);toast('ما قدرت أسوي PDF، استخدم «طباعة مباشرة» واختر حفظ PDF')}finally{busy=0}}
+// ===== exams list =====
+async function renderExams(){if(!DB)return;await flush();const all=(await getAll('exams')).sort((a,b)=>b.updated-a.updated);
+$('exList').innerHTML=all.map(r=>{const d=r.data,q=d.secs.length;return`<div class="card ex ${r.id==S.id?'cur':''}"><div class="nm">${r.id==S.id?'✏️ ':''}${esc(exName(d))}</div><div class="hint">${q} سؤال — آخر تعديل: ${new Date(r.updated).toLocaleString('ar-KW',{dateStyle:'medium',timeStyle:'short'})}</div>
+<div class="acts4"><button class="btn" onclick="openExam('${r.id}')">📂 فتح</button><button class="btn alt" onclick="dupExam('${r.id}')">📄 نسخ</button><button class="btn alt" onclick="renExam('${r.id}')">✏️ تسمية</button><button class="btn red" onclick="delExam('${r.id}')">🗑️ حذف</button></div></div>`}).join('')||'<div class="card hint">ما فيه اختبارات.</div>'}
+async function openExam(id){await flush();const r=await get('exams',id);if(!r)return;S=ensure(r.data);await put('meta',id,'current');fillHead();renderList();go('tHead');toast('تم فتح: '+exName(S))}
+async function dupExam(id){await flush();const r=await get('exams',id);const d=JSON.parse(JSON.stringify(r.data));d.id=uid();d.name=exName(r.data)+' (نسخة)';await put('exams',{id:d.id,updated:Date.now(),data:d});renderExams();toast('تم النسخ ✓')}
+async function renExam(id){await flush();const r=await get('exams',id);const n=prompt('اسم الاختبار:',exName(r.data));if(!n)return;r.data.name=n.trim();if(id==S.id)S.name=r.data.name;await put('exams',r);renderExams()}
+async function delExam(id){const r=await get('exams',id);if(!confirm('متأكد تبي تحذف «'+exName(r.data)+'»؟ ما تقدر ترجعه إلا من نسخة احتياطية.'))return;await del('exams',id);if(id==S.id){const all=(await getAll('exams')).sort((a,b)=>b.updated-a.updated);S=all[0]?ensure(all[0].data):blank();await flush();await put('meta',S.id,'current');fillHead()}renderExams();toast('تم الحذف')}
+// ===== bank =====
+async function toBank(si){if(!DB)return;const sec=JSON.parse(JSON.stringify(SX(si)));const sub=prompt('المادة:',localStorage.getItem('lastSub')||'');if(sub==null)return;const les=prompt('الدرس / الوحدة:',localStorage.getItem('lastLes')||'');if(les==null)return;
+localStorage.setItem('lastSub',sub.trim());localStorage.setItem('lastLes',les.trim());await put('bank',{id:uid(),subject:sub.trim()||'عام',lesson:les.trim()||'عام',created:Date.now(),sec});toast('انحفظ بالبنك ⭐')}
+function opts(el,arr,lab){const v=el.value;el.innerHTML=`<option value="">${lab}</option>`+arr.map(a=>`<option value="${esc(a[0])}">${esc(a[1])}</option>`).join('');el.value=arr.some(a=>a[0]==v)?v:''}
+async function renderBank(){if(!DB)return;const all=(await getAll('bank')).sort((a,b)=>b.created-a.created);
+opts($('bSub'),[...new Set(all.map(x=>x.subject))].map(x=>[x,x]),'كل المواد');const sb=$('bSub').value;
+opts($('bLes'),[...new Set(all.filter(x=>!sb||x.subject==sb).map(x=>x.lesson))].map(x=>[x,x]),'كل الدروس');
+opts($('bType'),Object.keys(TN).map(k=>[k,TN[k]]),'كل الأنواع');const ls=$('bLes').value,ty=$('bType').value,q=$('bQ').value.trim();
+const f=all.filter(x=>(!sb||x.subject==sb)&&(!ls||x.lesson==ls)&&(!ty||x.sec.type==ty)&&(!q||JSON.stringify([x.sec.title,x.sec.passage,x.sec.items.map(i=>i.text)]).includes(q)));
+$('bankList').innerHTML=f.map(x=>`<div class="card"><span class="tag">${esc(x.subject)}</span><span class="tag">${esc(x.lesson)}</span><span class="tag">${TN[x.sec.type]}</span><div style="font-weight:bold;margin:6px 0">${esc(x.sec.title)}</div><div class="hint">${x.sec.items.map(i=>esc(i.text)).filter(Boolean).slice(0,3).join(' • ')||(x.sec.items.length+' بند')}</div>
+<div class="row"><button class="btn" onclick="fromBank('${x.id}')">➕ إدراج بالاختبار</button><button class="btn red sm" style="flex:0 0 60px" onclick="delBank('${x.id}')">🗑️</button></div></div>`).join('')||'<div class="card hint">البنك فاضي أو ما فيه نتائج.</div>'}
+['bSub','bLes','bType'].forEach(i=>$(i).onchange=renderBank);$('bQ').oninput=renderBank;
+async function fromBank(id){const x=await get('bank',id);const s=JSON.parse(JSON.stringify(x.sec));s.id=uid();s.items.forEach(i=>i.id=uid());S.secs.push(s);save();toast('تمت الإضافة للاختبار ✓')}
+async function delBank(id){if(!confirm('حذف السؤال من البنك؟'))return;await del('bank',id);renderBank()}
+// ===== backup =====
+async function backupExport(){await flush();const data={kind:'backup',v:1,date:Date.now(),exams:await getAll('exams'),bank:await getAll('bank'),tpl:tpls()};
+const n='نسخة احتياطية - صانع الاختبارات - '+new Date().toISOString().slice(0,10)+'.exam',b=new Blob([enc(data)],{type:'application/octet-stream'});
+await share(b,n,'application/octet-stream');alert('النسخة الاحتياطية جاهزة ✓\nاحفظها بقوقل درايف أو أرسلها لنفسك. ترجعها من زر «استرجاع نسخة» داخل التطبيق.')}
+async function importBackup(d){if(!confirm(`بسترجع ${d.exams.length} اختبار و ${d.bank.length} سؤال من البنك. الاختبارات الحالية تبقى، واللي بنفس الرقم تتحدث. نكمل؟`))return;
+for(const r of d.exams)await put('exams',r);for(const r of d.bank)await put('bank',r);if(d.tpl&&d.tpl.length){const t=tpls();d.tpl.forEach(x=>{if(!t.some(y=>y.n==x.n))t.push(x)});try{localStorage.setItem('examTpl2',JSON.stringify(t))}catch(e){}}
+toast('تم الاسترجاع ✓');renderExams();renderTpl()}
+$('backupIn').onchange=e=>{const f=e.target.files[0];if(!f)return;f.text().then(t=>{let d;try{d=dec(t)}catch(_){return toast('الملف غير صالح')}if(d.kind!='backup')return toast('هذا مو ملف نسخة احتياطية');importBackup(d)});e.target.value=''};
+// ===== tutorial =====
+const TUT=[[null,'هلا فيك 👋 هذا «صانع الاختبارات». بنعلمك بخطوات بسيطة شلون تسوي اختبارك.'],
+['nav button[data-t=tList]','📚 «اختباراتي»: كل اختباراتك محفوظة هني. تقدر تفتح وتنسخ وتسمي وتحذف، وتسوي نسخة احتياطية.'],
+['nav button[data-t=tHead]','١ «الترويسة»: اكتب عنوان الامتحان والصف، وارفع الشعار. وتقدر تختار الخط وحجمه.'],
+['nav button[data-t=tQs]','٢ «الأسئلة»: اختار نوع السؤال، وحدد عدد البنود، وعبّها. وتقدر تحفظ أي سؤال بالبنك ⭐.'],
+['nav button[data-t=tPrev]','٣ «المعاينة»: تشوف الورقة، وتطلع PDF أو Word، أو تشاركها بالواتساب مباشرة. وفيه نموذج الإجابة ونسخة مكبرة.'],
+[null,'📲 على الآيفون: اضغط مشاركة ⬆️ ← «إضافة إلى الشاشة الرئيسية» عشان يصير التطبيق على شاشتك ويشتغل بدون إنترنت.'],
+['#helpBtn','إذا نسيت، اضغط ❓ فوق وترجع لك الشروحات. بالتوفيق!']];let ti=0,thi=null;
+function tutStart(){ti=0;$('tut').style.display='block';tutShow()}
+function tutShow(){if(thi)thi.classList.remove('tutHi');const[sel,t]=TUT[ti];thi=sel?document.querySelector(sel):null;if(thi)thi.classList.add('tutHi');$('tutT').textContent=t;$('tutN').textContent=`خطوة ${ti+1} من ${TUT.length}`;$('tutNext').textContent=ti==TUT.length-1?'تم ✓':'التالي ←'}
+$('tutNext').onclick=()=>{if(ti>=TUT.length-1)return tutEnd();ti++;tutShow()};
+function tutEnd(){if(thi)thi.classList.remove('tutHi');$('tut').style.display='none';localStorage.setItem('tutDone','1')}
+addEventListener('visibilitychange',()=>{if(document.hidden)flush()});
+init();
+if(IOS&&!STANDALONE&&!localStorage.getItem('iosHintOff'))$('iosHint').style.display='block';
+if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js').catch(()=>{});
+
+</script></body></html>
